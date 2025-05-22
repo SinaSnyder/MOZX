@@ -19,6 +19,7 @@ class _NowPlayingPageState extends State<NowPlayingPage> {
   Duration _duration = Duration.zero;
   bool _isPlaying = false;
   double _sliderMax = 1.0;
+  bool _isLiked = false;
 
   @override
   void initState() {
@@ -40,7 +41,7 @@ class _NowPlayingPageState extends State<NowPlayingPage> {
     _player.onDurationChanged.listen((duration) {
       setState(() {
         _duration = duration;
-        _sliderMax = _duration.inSeconds.toDouble().clamp(1.0, double.infinity);
+        _sliderMax = duration.inSeconds.toDouble().clamp(1.0, double.infinity);
       });
     });
 
@@ -63,6 +64,13 @@ class _NowPlayingPageState extends State<NowPlayingPage> {
     } else {
       await _player.resume();
     }
+  }
+
+  String _formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final minutes = twoDigits(duration.inMinutes.remainder(60));
+    final seconds = twoDigits(duration.inSeconds.remainder(60));
+    return "$minutes:$seconds";
   }
 
   @override
@@ -159,11 +167,11 @@ class _NowPlayingPageState extends State<NowPlayingPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    _position.toString().split('.').first,
+                    _formatDuration(_position),
                     style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                   Text(
-                    _duration.toString().split('.').first,
+                    _formatDuration(_duration),
                     style: const TextStyle(color: Colors.white, fontSize: 12),
                   ),
                 ],
@@ -209,8 +217,15 @@ class _NowPlayingPageState extends State<NowPlayingPage> {
                   onPressed: () {},
                 ),
                 IconButton(
-                  icon: const Icon(Icons.favorite, color: Colors.red),
-                  onPressed: () {},
+                  icon: Icon(
+                    _isLiked ? Icons.favorite : Icons.favorite_border,
+                    color: _isLiked ? Colors.red : Colors.white,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _isLiked = !_isLiked;
+                    });
+                  },
                 ),
               ],
             ),
