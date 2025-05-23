@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'LoginPage.dart';
 import 'MySongPage.dart';
 import 'ShopPage.dart';
+import 'Password.dart';
 
 void main () {
   runApp(mozxApp());
@@ -117,19 +118,19 @@ class MainMenuPage extends StatelessWidget {
             ),
           ),
         ),
-        body: Padding(
+        body: SingleChildScrollView(
+          child:Padding(
             padding: EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Search Field
                 TextField(
                   decoration: InputDecoration(
-                    hintText: 'Search' , suffixStyle: GoogleFonts.redHatDisplay(),
-                    prefixIcon: Icon(Icons.search),
-                    contentPadding: EdgeInsets.symmetric(
-                      vertical: 5.0,
-                      horizontal: 10.0,
-                    ),
+                    hintText: 'Search',
+                    prefixIcon: Icon(Icons.search, color: Colors.white),
+                    hintStyle: TextStyle(color: Colors.white70),
+                    contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                     filled: true,
                     fillColor: Colors.grey[800],
                     border: OutlineInputBorder(
@@ -137,118 +138,103 @@ class MainMenuPage extends StatelessWidget {
                       borderSide: BorderSide.none,
                     ),
                   ),
+                  style: TextStyle(color: Colors.white),
                 ),
-                SizedBox(height: 5),
+                SizedBox(height: 10),
+
+                // Action Buttons Row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                      width: 190,
-                      height: 45,
+                    Expanded(
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => MySongPage()),
-                          );
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => MySongPage()));
                         },
-                        icon: Icon(Icons.music_note , color: Colors.white,),
-                        label: Text("MY SONGS" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
-                        style: ElevatedButton.styleFrom( backgroundColor: Colors.grey[800]),
+                        icon: Icon(Icons.music_note, color: Colors.white),
+                        label: Text("MY SONGS", style: GoogleFonts.redHatDisplay(color: Colors.white)),
+                        style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
                       ),
                     ),
-                    SizedBox(
-                      width: 190,
-                      height: 45,
-                      child : ElevatedButton.icon(
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: ElevatedButton.icon(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => ShopPage()),
-                          );
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => ShopPage()));
                         },
-                        icon: Icon(Icons.shopping_bag , color: Colors.white,),
-                        label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
+                        icon: Icon(Icons.shopping_bag, color: Colors.white),
+                        label: Text("SHOP", style: GoogleFonts.redHatDisplay(color: Colors.white)),
                         style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
                       ),
                     ),
                   ],
                 ),
-                SizedBox( height: 5,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('MOST POPULAR' , style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w900 , fontSize: 20),),
-                    PopupMenuButton<String>(
-                      icon: Icon(Icons.sort , color: Colors.white,),
-                      onSelected: (value) {
-                        print('sort by $value');
-                      },
-                      itemBuilder: (BuildContext context) {
-                        return [
-                          const PopupMenuItem<String>(
-                            value: 'Name',
-                            child: Text('sort by Name'),
-                          ),
-                          const PopupMenuItem<String>(
-                            value: 'Date',
-                            child: Text('sort by Date'),
-                          ),
-                        ];
-                      },
-                    ),
-                  ],
-                ),
-                Divider(color: Colors.white,),
-                Expanded(
-                  child: GridView.builder(
-                    itemCount: 7,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount:2,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8,
-                      childAspectRatio: 4 / 4,
-                    ) ,
-                    itemBuilder: (context,index) {
+                SizedBox(height: 10),
+                Text('LOCAL', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold)),
+                SizedBox(height: 5),
+                SizedBox(
+                  height: 200,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 6,
+                    itemBuilder: (context, index) {
                       return Container(
-                        padding: EdgeInsets.all(8),
+                        width: 200,
+                        height: 200,
+                        margin: EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
-                          color: Colors.grey[800],
-                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.grey[700],
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                color: Colors.grey[800],
-                                child: Center(child: Text('COVER')),
-                              ),
-                            ),
-                          ],
-                        ),
+                        child: Center(child: Text('Song', style: TextStyle(color: Colors.white))),
                       );
                     },
                   ),
                 ),
+                SizedBox(height: 10),
+                Text('MY SONGS', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold)),
+                SizedBox(height: 5),
+                SizedBox(
+                  height: 200,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 200,
+                        height: 200,
+                        margin: EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[700],
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(child: Text('Song', style: TextStyle(color: Colors.white))),
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 15),
+                // Genre Buttons (2 per row)
+                Text('GENRES', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold)),
+                SizedBox(height: 10 ,),
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  children: [
+                    SizedBox(width: 1,),
+                    genreButton('POP', 'assets/blue-gradient-4000x4000-19871.png'),
+                    genreButton('HIP HOP', 'assets/grey-gradient-4000x4000-19814.png'),
+                    SizedBox(width: 1,),
+                    genreButton('ROCK', 'assets/orange-gradient-4000x4000-19817.png'),
+                    genreButton('CLASSIC', 'assets/grey-purple-4000x4000-19811.png'),
+                  ],
+                )
               ],
-            )
+            ),
+          ),
         )
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
