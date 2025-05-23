@@ -1,5 +1,6 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:MOZX/mozx/SignUpPage.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -24,11 +25,13 @@ class LoginPage extends StatelessWidget {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
-        Colors.red.shade800,
-        Colors.red.shade900,
-        Colors.brown.shade900,
-        Colors.black,
-        Colors.black,
+        Color.fromARGB(255, 184, 0, 0),
+        Color.fromARGB(255, 144, 0, 0),
+        Color.fromARGB(255, 120, 0, 0),
+        Color.fromARGB(255, 100, 0, 0),
+        Color.fromARGB(255, 75, 0, 0),
+        Color.fromARGB(255, 52, 0, 0),
+        Color.fromARGB(255, 25, 0, 0),
         Colors.black,
       ],
     ),
@@ -79,7 +82,12 @@ class LoginPage extends StatelessWidget {
     width: 360,
     height: 45,
     child: ElevatedButton(
-    onPressed: () {},
+    onPressed: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => MainMenuPage()),
+    );
+    },
     style: ElevatedButton.styleFrom(
     backgroundColor: Colors.blue,
     shape: RoundedRectangleBorder(
@@ -89,23 +97,28 @@ class LoginPage extends StatelessWidget {
     child: Text(
     'Log in',
     style: GoogleFonts.redHatDisplay(
-    fontWeight: FontWeight.bold,
-    fontSize: 16,
-    color: Colors.white,
+    fontWeight: FontWeight.bold,   fontSize: 16,
+      color: Colors.white,
     ),
     ),
     ),
     ),
-    SizedBox(height: 20),
-    TextButton(
-    onPressed: () {},
-    child: Text(
-    'forgot password?',
-    style: GoogleFonts.redHatDisplay(color: Colors.blue),
-    ),
-    ),              SizedBox(height: 10),
+      SizedBox(height: 20),
       TextButton(
         onPressed: () {},
+        child: Text(
+          'forgot password?',
+          style: GoogleFonts.redHatDisplay(color: Colors.blue),
+        ),
+      ),
+      SizedBox(height: 10),
+      TextButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SignIn()),
+          );
+        },
         child: Text(
           'or sign up',
           style: GoogleFonts.redHatDisplay(
