@@ -7,6 +7,9 @@ import 'package:MOZX/mozx/ShopPage.dart';
 import 'package:MOZX/mozx/MySongPage.dart';
 import 'package:MOZX/mozx/MOZX.dart';
 import 'package:MOZX/mozx/Profile.dart';
+import 'package:MOZX/mozx/NowPlayingPage.dart';
+import 'package:audioplayers/audioplayers.dart';
+
 
 class PasswordField extends StatefulWidget {
   final TextEditingController controller;
@@ -139,5 +142,34 @@ Widget genreButton(String label, String imagePath) {
   );
 }
 
+
+
+class Song {
+  final String title;
+  final String artist;
+  final String assetPath;
+  final String coverPath;
+
+  Song({
+    required this.title,
+    required this.artist,
+    required this.assetPath,
+    required this.coverPath,
+  });
+}
+
+
+
+List<Song> localSongs = [
+  Song(title: 'WTF', artist: "Hugel Delsa" , assetPath: 'wtf_hugel.mp3' , coverPath: 'assets/windows-11-stock-official-colorful-3840x2160-5666.jpg'),
+  Song(title: 'FE!N', artist: 'Travis Scott' ,  assetPath: 'FE!N_Travis Scott, Playboi Carti.mp3' , coverPath: 'assets/windows-11-stock-official-colorful-3840x2160-5666.jpg'),
+  Song(title: 'Star Boy', artist: 'The Weekend' , assetPath: 'starboy.mp3' , coverPath: 'assets/windows-11-stock-official-colorful-3840x2160-5666.jpg'),
+];
+
+
+List<Song> mySongs = [
+  Song(title: 'Love Again', artist: 'Dua Lipa', assetPath: 'Love Again_Dua Lipa.mp3', coverPath: 'assets/windows-11-stock-official-colorful-3840x2160-5666.jpg',),
+  Song(title: 'The Scotts', artist: 'Travis Scott & Kid Cudi', assetPath: 'the_scotts_kid.mp3', coverPath: 'assets/windows-11-stock-official-colorful-3840x2160-5666.jpg',),
+];
 
 

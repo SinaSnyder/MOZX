@@ -7,6 +7,9 @@ import 'package:MOZX/mozx/ShopPage.dart';
 import 'package:MOZX/mozx/MySongPage.dart';
 import 'package:MOZX/mozx/MOZX.dart';
 import 'package:MOZX/mozx/Profile.dart';
+import 'package:MOZX/mozx/NowPlayingPage.dart';
+import 'package:audioplayers/audioplayers.dart';
+
 
 
 class LoginPage extends StatelessWidget {
@@ -135,4 +138,5 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
 
