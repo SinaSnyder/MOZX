@@ -2,6 +2,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'LoginPage.dart';
 import 'MySongPage.dart';
+import 'ShopPage.dart';
 
 void main () {
   runApp(mozxApp());
@@ -55,7 +56,7 @@ class MainMenuPage extends StatelessWidget {
                 DrawerHeader(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: NetworkImage('https://4kwallpapers.com/images/walls/thumbs_2t/5666.jpg'),
+                        image: AssetImage('assets/windows-11-stock-official-colorful-3840x2160-5666.jpg'),
                         fit: BoxFit.cover
                     ),
                   ),
@@ -90,7 +91,12 @@ class MainMenuPage extends StatelessWidget {
                 ListTile(
                   leading: Icon(Icons.shopping_bag_outlined , color : Colors.white),
                   title: Text('Shop' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ShopPage()),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.settings_outlined , color : Colors.white),
@@ -113,14 +119,14 @@ class MainMenuPage extends StatelessWidget {
     contentPadding: EdgeInsets.symmetric(
     vertical: 5.0,
     horizontal: 10.0,
-    ),
-    filled: true,
-    fillColor: Colors.grey[800],
-    border: OutlineInputBorder(
 
-      borderRadius: BorderRadius.circular(40),
-      borderSide: BorderSide.none,
     ),
+      filled: true,
+      fillColor: Colors.grey[800],
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(40),
+        borderSide: BorderSide.none,
+      ),
     ),
     ),
       SizedBox(height: 5),
@@ -146,7 +152,12 @@ class MainMenuPage extends StatelessWidget {
             width: 190,
             height: 45,
             child : ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ShopPage()),
+                );
+              },
               icon: Icon(Icons.shopping_bag , color: Colors.white,),
               label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
@@ -215,6 +226,21 @@ class MainMenuPage extends StatelessWidget {
     )
         )
     );
+
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
