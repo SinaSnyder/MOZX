@@ -83,51 +83,52 @@ class SignIn extends StatelessWidget {
     prefixIcon: Icon(Icons.phone),
     filled: true,
     fillColor: Colors.grey[800],
-    border: OutlineInputBorder( borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide.none,
+    border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+    borderSide: BorderSide.none,
     ),
     ),
     ),
-      SizedBox(height: 20),
-      TextField(
-        decoration: InputDecoration(
-          hintText: 'Enter Password',
-          prefixIcon: Icon(Icons.lock),
-          filled: true,
-          fillColor: Colors.grey[800],
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-            borderSide: BorderSide.none,
+    SizedBox(height: 20),
+    TextField(
+    decoration: InputDecoration(
+    hintText: 'Enter Password',
+    prefixIcon: Icon(Icons.lock),
+    filled: true,
+    fillColor: Colors.grey[800],
+    border: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+    borderSide: BorderSide.none,
+    ),
+    ),
+    ),
+    SizedBox(height: 20),
+    SizedBox(
+    width: 360,
+      height: 45,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => LoginPage()),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.blue,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(13),
+          ),
+        ),
+        child: Text(
+          'Sign in',
+          style: GoogleFonts.redHatDisplay(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+            color: Colors.white,
           ),
         ),
       ),
-      SizedBox(height: 20),
-      SizedBox(
-        width: 360,
-        height: 45,
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LoginPage()),
-            );
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(13),
-            ),
-          ),
-          child: Text(
-            'Sign in',
-            style: GoogleFonts.redHatDisplay(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
+    ),
     ],
     ),
     ),
