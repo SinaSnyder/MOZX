@@ -6,10 +6,14 @@ import 'package:MOZX/mozx/SignUpPage.dart';
 import 'package:MOZX/mozx/ShopPage.dart';
 import 'package:MOZX/mozx/MySongPage.dart';
 import 'package:MOZX/mozx/MOZX.dart';
+import 'package:MOZX/mozx/Profile.dart';
 
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  LoginPage({super.key});
+
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +52,7 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 40),
               TextField(
+                controller: usernameController,
                 decoration: InputDecoration(
                   hintText: 'Enter Username or Email',
                   hintStyle: TextStyle(color: Colors.white70),
@@ -62,17 +67,26 @@ class LoginPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 20),
-              PasswordField(),
+              PasswordField(controller: passwordController),
               SizedBox(height: 20),
               SizedBox(
                 width: 360,
                 height: 45,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MainMenuPage()),
-                    );
+                    if (usernameController.text.isEmpty || passwordController.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Please complete every field of the form'),
+                          backgroundColor: Colors.white,
+                        ),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainMenuPage()),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,

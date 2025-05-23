@@ -6,10 +6,11 @@ import 'package:MOZX/mozx/SignUpPage.dart';
 import 'package:MOZX/mozx/ShopPage.dart';
 import 'package:MOZX/mozx/MySongPage.dart';
 import 'package:MOZX/mozx/MOZX.dart';
-
+import 'package:MOZX/mozx/Profile.dart';
 
 class PasswordField extends StatefulWidget {
-  const PasswordField({Key? key}) : super(key: key);
+  final TextEditingController controller;
+  const PasswordField({Key? key , required this.controller}) : super(key: key);
 
   @override
   _PasswordFieldState createState() => _PasswordFieldState();
@@ -27,6 +28,7 @@ class _PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: widget.controller,
       obscureText: _obscureText,
       decoration: InputDecoration(
         hintText: 'Enter Password',
@@ -52,7 +54,8 @@ class _PasswordFieldState extends State<PasswordField> {
 
 
 class ConfirmPassword extends StatefulWidget {
-  const ConfirmPassword({Key? key}) : super(key: key);
+  final TextEditingController controller;
+  const ConfirmPassword({Key? key , required this.controller }) : super(key: key);
 
   @override
   _ConfirmPasswordState createState() => _ConfirmPasswordState();
@@ -135,3 +138,6 @@ Widget genreButton(String label, String imagePath) {
     ),
   );
 }
+
+
+

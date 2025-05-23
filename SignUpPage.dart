@@ -6,9 +6,17 @@ import 'package:MOZX/mozx/SignUpPage.dart';
 import 'package:MOZX/mozx/ShopPage.dart';
 import 'package:MOZX/mozx/MySongPage.dart';
 import 'package:MOZX/mozx/MOZX.dart';
+import 'package:MOZX/mozx/Profile.dart';
+
 
 class SignIn extends StatelessWidget {
-  const SignIn({super.key});
+  SignIn({super.key});
+
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +55,7 @@ class SignIn extends StatelessWidget {
               ),
               SizedBox(height: 40),
               TextField(
+                controller: usernameController,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: 'Enter Username',
@@ -62,6 +71,7 @@ class SignIn extends StatelessWidget {
               ),
               SizedBox(height: 20),
               TextField(
+                controller: emailController,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: 'Enter Email',
@@ -77,6 +87,7 @@ class SignIn extends StatelessWidget {
               ),
               SizedBox(height: 20),
               TextField(
+                controller: phoneController,
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
                   hintText: 'Enter Phone Number',
@@ -91,19 +102,28 @@ class SignIn extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              PasswordField(),
+              PasswordField(controller: passwordController),
               SizedBox(height: 20),
-              ConfirmPassword(),
+              ConfirmPassword(controller: confirmPasswordController),
               SizedBox(height: 20),
               SizedBox(
                 width: 360,
                 height: 45,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
+                    if (usernameController.text.isEmpty || passwordController.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Please complete every field of the form'),
+                          backgroundColor: Colors.white,
+                        ),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginPage()),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
