@@ -11,10 +11,6 @@ import 'SearchPage.dart';
 
 final player = AudioPlayer();
 
-void main () {
-  runApp(mozxApp());
-}
-
 class mozxApp extends StatelessWidget {
   const mozxApp({super.key});
 
