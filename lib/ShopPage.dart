@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'LoginPage.dart';
 import 'MySongPage.dart';
 import 'MainMenuPage.dart';
+import 'Profile.dart';
+
+
+
 
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
@@ -68,7 +72,12 @@ class ShopPage extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.person_outline_rounded , color : Colors.white),
                 title: Text('My Profile' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                  );
+                },
               ),
               ListTile(
                 leading: Icon(Icons.music_note_outlined , color : Colors.white),
@@ -124,14 +133,11 @@ class ShopPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 190,
+                  width: 150,
                   height: 45,
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MySongPage()),
-                      );
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => MySongPage()));
                     },
                     icon: Icon(Icons.music_note , color: Colors.white,),
                     label: Text("MY SONGS" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
@@ -140,7 +146,21 @@ class ShopPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 190,
+                  width: 70,
+                  height: 45,
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MainMenuPage()),
+                      );
+                    },
+                    icon: Icon(Icons.home , color: Colors.white,),
+                    style: OutlinedButton.styleFrom( backgroundColor: Colors.grey[800],),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
                   height: 45,
                   child : ElevatedButton.icon(
                     onPressed: () {},
@@ -152,9 +172,85 @@ class ShopPage extends StatelessWidget {
               ],
             ),
             SizedBox( height : 5,),
+            Expanded(
+                child: ListView(
+                  children: [
+                    _buildCategoryButton(
+                      context,
+                      imagePath: 'assets/Picsart_25-05-21_14-27-49-496.jpg',
+                      label: 'PERSIAN',
+                      onTap: () {},
+                    ),
+                    _buildCategoryButton(
+                      context,
+                      imagePath: 'assets/Picsart_25-05-21_14-29-04-583.jpg',
+                      label: 'ROCK',
+                      onTap: () {},
+                    ),
+                    _buildCategoryButton(
+                      context,
+                      imagePath: 'assets/Picsart_25-05-21_14-26-58-835.jpg',
+                      label: 'POP',
+                      onTap: () {},
+                    ),
+                    _buildCategoryButton(
+                      context,
+                      imagePath: 'assets/Picsart_25-05-21_14-29-57-165.jpg',
+                      label: 'HIP HOP',
+                      onTap: () {},
+                    ),
+                    _buildCategoryButton(
+                      context,
+                      imagePath: 'assets/Picsart_25-05-21_14-30-41-081.jpg',
+                      label: 'CLASSIC',
+                      onTap: () {},
+                    ),
+                  ],
+                )
+            )
           ],
         ),
       ),
     );
   }
 }
+
+
+Widget _buildCategoryButton(BuildContext context, {
+  required String imagePath,
+  required String label,
+  required VoidCallback onTap,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      margin: EdgeInsets.symmetric(vertical: 8),
+      height: 160,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(imagePath),
+          fit: BoxFit.cover,
+        ),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        label,
+        style: GoogleFonts.redHatDisplay(
+          color: Colors.white,
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+          shadows: [
+            Shadow(
+              blurRadius: 10,
+              color: Colors.black,
+              offset: Offset(2, 2),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+

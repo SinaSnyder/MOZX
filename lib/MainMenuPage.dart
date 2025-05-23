@@ -4,6 +4,7 @@ import 'LoginPage.dart';
 import 'MySongPage.dart';
 import 'ShopPage.dart';
 import 'Password.dart';
+import 'Profile.dart';
 
 void main () {
   runApp(mozxApp());
@@ -87,7 +88,12 @@ class MainMenuPage extends StatelessWidget {
                 ListTile(
                   leading: Icon(Icons.person_outline_rounded , color : Colors.white),
                   title: Text('My Profile' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfilePage()),
+                    );
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.music_note_outlined , color : Colors.white),
@@ -140,31 +146,39 @@ class MainMenuPage extends StatelessWidget {
                   ),
                   style: TextStyle(color: Colors.white),
                 ),
-                SizedBox(height: 10),
-
-                // Action Buttons Row
+                SizedBox(height: 5,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (_) => MySongPage()));
-                        },
-                        icon: Icon(Icons.music_note, color: Colors.white),
-                        label: Text("MY SONGS", style: GoogleFonts.redHatDisplay(color: Colors.white)),
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
+                      child: SizedBox(
+                        width: 190,
+                        height: 45,
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (_) => MySongPage()));
+                          },
+                          icon: Icon(Icons.music_note , color: Colors.white,),
+                          label: Text("MY SONGS" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
+                          style: OutlinedButton.styleFrom( backgroundColor: Colors.grey[800],),
+
+                        ),
                       ),
                     ),
                     SizedBox(width: 10),
                     Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (_) => ShopPage()));
-                        },
-                        icon: Icon(Icons.shopping_bag, color: Colors.white),
-                        label: Text("SHOP", style: GoogleFonts.redHatDisplay(color: Colors.white)),
-                        style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
+                      child: SizedBox(
+                        width: 190,
+                        height: 45,
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (_) => ShopPage()));
+                          },
+                          icon: Icon(Icons.shopping_bag , color: Colors.white,),
+                          label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
+                          style: OutlinedButton.styleFrom( backgroundColor: Colors.grey[800],),
+
+                        ),
                       ),
                     ),
                   ],
@@ -236,5 +250,3 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 }
-
-

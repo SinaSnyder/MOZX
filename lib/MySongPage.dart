@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'LoginPage.dart';
 import 'ShopPage.dart';
 import 'MainMenuPage.dart';
+import 'Profile.dart';
+
 
 
 class MySongPage extends StatelessWidget {
@@ -74,7 +76,12 @@ class MySongPage extends StatelessWidget {
               ListTile(
                 leading: Icon(Icons.person_outline_rounded , color : Colors.white),
                 title: Text('My Profile' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                  );
+                },
               ),
               ListTile(
                 leading: Icon(Icons.music_note_outlined , color : Colors.white),
@@ -130,25 +137,35 @@ class MySongPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 190,
+                  width: 150,
                   height: 45,
                   child: ElevatedButton.icon(
                     onPressed: () {},
                     icon: Icon(Icons.music_note , color: Colors.white,),
                     label: Text("MY SONGS" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
                     style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.white), backgroundColor: Color.fromARGB(255, 20, 20, 20) , foregroundColor: Colors.white ,),
-
                   ),
                 ),
                 SizedBox(
-                  width: 190,
+                  width: 70,
                   height: 45,
-                  child : ElevatedButton.icon(
+                  child: IconButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ShopPage()),
+                        MaterialPageRoute(builder: (context) => MainMenuPage()),
                       );
+                    },
+                    icon: Icon(Icons.home , color: Colors.white,),
+                    style: OutlinedButton.styleFrom( backgroundColor: Colors.grey[800],),
+                  ),
+                ),
+                SizedBox(
+                  width: 150,
+                  height: 45,
+                  child : ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ShopPage()));
                     },
                     icon: Icon(Icons.shopping_bag , color: Colors.white,),
                     label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
