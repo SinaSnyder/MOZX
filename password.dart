@@ -90,3 +90,48 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
     );
   }
 }
+
+
+Widget genreButton(String label, String imagePath) {
+  return SizedBox(
+    width: 180,
+    height: 100,
+    child: ElevatedButton(
+      onPressed: () {
+        // Filter or navigate
+      },
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.zero,
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      ),
+      child: Ink(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(imagePath),
+            fit: BoxFit.cover,
+          ),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontFamily: GoogleFonts.redHatDisplay().fontFamily,
+              color: Colors.white,
+              shadows: [
+                Shadow(
+                  color: Colors.black,
+                  offset: Offset(1, 1),
+                  blurRadius: 2,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
