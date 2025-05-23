@@ -30,7 +30,7 @@ class MainMenuPage extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: AppBar(
         centerTitle: true,
-        title: Text('MOZX', style: GoogleFonts.redHatDisplay(),),
+        title: Text('MOZX', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold),),
     titleTextStyle: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),
     actions: [
     IconButton(
@@ -116,9 +116,9 @@ class MainMenuPage extends StatelessWidget {
     padding: EdgeInsets.all(8),
     decoration: BoxDecoration(
     color: Colors.grey[800],
-    borderRadius: BorderRadius.circular(25),
-    ),
 
+      borderRadius: BorderRadius.circular(25),
+    ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -140,6 +140,10 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 
 
