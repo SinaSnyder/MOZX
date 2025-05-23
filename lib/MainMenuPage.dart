@@ -1,10 +1,14 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'LoginPage.dart';
 import 'MySongPage.dart';
 import 'ShopPage.dart';
 import 'Password.dart';
 import 'Profile.dart';
+import 'NowPlayingPage.dart';
+
+final player = AudioPlayer();
 
 void main () {
   runApp(mozxApp());
@@ -190,17 +194,39 @@ class MainMenuPage extends StatelessWidget {
                   height: 200,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 6,
+                    itemCount: localSongs.length,
                     itemBuilder: (context, index) {
+                      final song = localSongs[index];
                       return Container(
                         width: 200,
-                        height: 200,
                         margin: EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                           color: Colors.grey[700],
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Center(child: Text('Song', style: TextStyle(color: Colors.white))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.music_note, size: 50, color: Colors.white),
+                              SizedBox(height: 10),
+                              Text(song.title,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                              SizedBox(height: 10),
+                              ElevatedButton(
+                                onPressed: () async {
+                                  await player.play(AssetSource(song.assetPath));
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blue,
+                                ),
+                                child: Text("Play", style: TextStyle(color: Colors.white)),
+                              )
+                            ],
+                          ),
+                        ),
                       );
                     },
                   ),
@@ -212,17 +238,41 @@ class MainMenuPage extends StatelessWidget {
                   height: 200,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: mySongs.length,
                     itemBuilder: (context, index) {
+                      final song = mySongs[index];
                       return Container(
                         width: 200,
-                        height: 200,
                         margin: EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                           color: Colors.grey[700],
                           borderRadius: BorderRadius.circular(15),
                         ),
-                        child: Center(child: Text('Song', style: TextStyle(color: Colors.white))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.music_note, size: 50, color: Colors.white),
+                              SizedBox(height: 10),
+                              Text(song.title,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                              SizedBox(height: 10),
+                              ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => NowPlayingPage(song: song),
+                                    ),
+                                  );
+                                },
+                                child: Text("Play"),
+                              )
+                            ],
+                          ),
+                        ),
                       );
                     },
                   ),
