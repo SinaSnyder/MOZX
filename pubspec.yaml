@@ -1,4 +1,4 @@
-name: mozx
+name: MOZX
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -34,6 +34,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  audioplayers: ^5.2.1
+  google_fonts: ^6.1.0
+
 
 dev_dependencies:
   flutter_test:
@@ -45,17 +48,54 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+
+  assets:
+    - assets/ChatGPT Image May 5, 2025, 12_14_20 AM.png
+    - assets/windows-11-stock-official-colorful-3840x2160-5666.jpg
+    - assets/blue-gradient-4000x4000-19871.png
+    - assets/grey-gradient-4000x4000-19814.png
+    - assets/grey-purple-4000x4000-19811.png
+    - assets/orange-gradient-4000x4000-19817.png
+    - assets/Picsart_25-05-21_14-26-58-835.jpg
+    - assets/Picsart_25-05-21_14-27-49-496.jpg
+    - assets/Picsart_25-05-21_14-29-04-583.jpg
+    - assets/Picsart_25-05-21_14-29-57-165.jpg
+    - assets/Picsart_25-05-21_14-30-41-081.jpg
+    - assets/wtf_hugel.mp3
+    - assets/uptown_funk_ft_mark_ronson.mp3
+    - assets/the_scotts_kid.mp3
+    - assets/starboy.mp3
+    - assets/Love Again_Dua Lipa.mp3
+    - assets/Kasra Zahedi_Mano Yadet Nemiad (128).mp3
+    - assets/HanuMankind_Ft_Kalmi_Big_Dawgs_musicdel.ir.mp3
+    - assets/Flashing_Lights_(feat. Dwele)_Kanye West.mp3
+    - assets/FE!N_Travis Scott, Playboi Carti.mp3
+    - assets/Dua_Lipa_Break_My_Heart_dibamusics.mp3
+    - assets/Die Young_Kesha.mp3
+    - assets/Black Betty_Ram Jam.mp3
+    - assets/16_Dreamers_Savoir_Adore.mp3
+    - assets/11_Going_Under_Evanescence.mp3
+    - assets/love_story.mp3
+    - assets/Picsart_25-05-22_22-59-54-606.jpg
+    - assets/Picsart_25-05-22_22-58-26-524.jpg
+    - assets/Picsart_25-05-22_23-01-19-759.jpg
+    - assets/Picsart_25-05-22_22-59-22-696.jpg
+    - assets/Picsart_25-05-22_23-00-43-699.jpg
+    - assets/Picsart_25-05-22_23-02-07-475.jpg
+    - assets/Picsart_25-05-22_23-02-47-206.jpg
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -87,3 +127,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/ChatGPT Image May 5, 2025, 12_14_20 AM.png"
