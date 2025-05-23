@@ -9,6 +9,8 @@ import 'package:MOZX/mozx/MOZX.dart';
 import 'package:MOZX/mozx/Profile.dart';
 import 'package:MOZX/mozx/NowPlayingPage.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:MOZX/mozx/PurchasePage.dart';
+import 'package:MOZX/mozx/ListOfSongs.dart';
 
 
 class ProfilePage extends StatelessWidget {
