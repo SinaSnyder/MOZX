@@ -10,6 +10,8 @@ import 'SearchPage.dart';
 
 
 
+
+
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
 

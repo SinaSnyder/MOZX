@@ -29,6 +29,7 @@ class mozxApp extends StatelessWidget {
   }
 }
 
+
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({super.key});
 
