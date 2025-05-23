@@ -6,6 +6,7 @@ import 'MainMenuPage.dart';
 import 'Profile.dart';
 import 'ListOfSongs.dart';
 import 'Password.dart';
+import 'SearchPage.dart';
 
 
 
@@ -128,6 +129,12 @@ class ShopPage extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => SongSearchPage()),
+                );
+              },
             ),
             SizedBox(height: 5),
             Row(
@@ -250,7 +257,7 @@ class ShopPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => CategorySongPage(
                               category: 'CLASSIC',
-                              songs: PopSongs,
+                              songs: ClassicSongs,
                             ),
                           ),
                         );
@@ -303,6 +310,9 @@ Widget _buildCategoryButton(BuildContext context, {
     ),
   );
 }
+
+
+
 
 
 

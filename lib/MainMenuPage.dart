@@ -7,6 +7,7 @@ import 'ShopPage.dart';
 import 'Password.dart';
 import 'Profile.dart';
 import 'NowPlayingPage.dart';
+import 'SearchPage.dart';
 
 final player = AudioPlayer();
 
@@ -27,7 +28,6 @@ class mozxApp extends StatelessWidget {
     );
   }
 }
-
 
 class MainMenuPage extends StatelessWidget {
   const MainMenuPage({super.key});
@@ -72,8 +72,7 @@ class MainMenuPage extends StatelessWidget {
                 DrawerHeader(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(
-                            'assets/windows-11-stock-official-colorful-3840x2160-5666.jpg'),
+                        image: AssetImage('assets/windows-11-stock-official-colorful-3840x2160-5666.jpg'),
                         fit: BoxFit.cover
                     ),
                   ),
@@ -83,20 +82,16 @@ class MainMenuPage extends StatelessWidget {
                       CircleAvatar(
                         radius: 30,
                         backgroundColor: Colors.black,
-                        child: Icon(
-                          Icons.perm_identity, size: 40, color: Colors.white,),
+                        child: Icon(Icons.perm_identity , size: 40, color: Colors.white,),
                       ),
                       SizedBox(height: 10,),
-                      Text("NAME", style: GoogleFonts.redHatDisplay(
-                          color: Colors.white, fontWeight: FontWeight.bold),)
+                      Text("NAME" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontWeight: FontWeight.bold),)
                     ],
                   ),
                 ),
                 ListTile(
-                  leading: Icon(
-                      Icons.person_outline_rounded, color: Colors.white),
-                  title: Text('My Profile',
-                    style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                  leading: Icon(Icons.person_outline_rounded , color : Colors.white),
+                  title: Text('My Profile' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -105,9 +100,8 @@ class MainMenuPage extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.music_note_outlined, color: Colors.white),
-                  title: Text('My Songs',
-                    style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                  leading: Icon(Icons.music_note_outlined , color : Colors.white),
+                  title: Text('My Songs' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -116,10 +110,8 @@ class MainMenuPage extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: Icon(
-                      Icons.shopping_bag_outlined, color: Colors.white),
-                  title: Text('Shop',
-                    style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                  leading: Icon(Icons.shopping_bag_outlined , color : Colors.white),
+                  title: Text('Shop' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -128,9 +120,8 @@ class MainMenuPage extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.settings_outlined, color: Colors.white),
-                  title: Text('Setting',
-                    style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                  leading: Icon(Icons.settings_outlined , color : Colors.white),
+                  title: Text('Setting' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
                   onTap: () {},
                 ),
               ],
@@ -138,7 +129,7 @@ class MainMenuPage extends StatelessWidget {
           ),
         ),
         body: SingleChildScrollView(
-          child: Padding(
+          child:Padding(
             padding: EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,8 +140,7 @@ class MainMenuPage extends StatelessWidget {
                     hintText: 'Search',
                     prefixIcon: Icon(Icons.search, color: Colors.white),
                     hintStyle: TextStyle(color: Colors.white70),
-                    contentPadding: EdgeInsets.symmetric(
-                        vertical: 5.0, horizontal: 10.0),
+                    contentPadding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
                     filled: true,
                     fillColor: Colors.grey[800],
                     border: OutlineInputBorder(
@@ -158,6 +148,12 @@ class MainMenuPage extends StatelessWidget {
                       borderSide: BorderSide.none,
                     ),
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => SongSearchPage()),
+                    );
+                  },
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(height: 5,),
@@ -170,15 +166,11 @@ class MainMenuPage extends StatelessWidget {
                         height: 45,
                         child: ElevatedButton.icon(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(
-                                builder: (_) => MySongPage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (_) => MySongPage()));
                           },
-                          icon: Icon(Icons.music_note, color: Colors.white,),
-                          label: Text(
-                            "MY SONGS", style: GoogleFonts.redHatDisplay(
-                              color: Colors.white, fontSize: 15),),
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.grey[800],),
+                          icon: Icon(Icons.music_note , color: Colors.white,),
+                          label: Text("MY SONGS" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
+                          style: OutlinedButton.styleFrom( backgroundColor: Colors.grey[800],),
                         ),
                       ),
                     ),
@@ -188,11 +180,8 @@ class MainMenuPage extends StatelessWidget {
                       height: 45,
                       child: IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.home, color: Colors.white,),
-                        style: OutlinedButton.styleFrom(
-                            side: BorderSide(color: Colors.white),
-                            backgroundColor: Color.fromARGB(255, 20, 20, 20),
-                            foregroundColor: Colors.white),
+                        icon: Icon(Icons.home , color: Colors.white,),
+                        style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.white), backgroundColor: Color.fromARGB(255, 20, 20, 20), foregroundColor: Colors.white),
                       ),
                     ),
                     SizedBox(width: 10),
@@ -202,14 +191,11 @@ class MainMenuPage extends StatelessWidget {
                         height: 45,
                         child: ElevatedButton.icon(
                           onPressed: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (_) => ShopPage()));
+                            Navigator.push(context, MaterialPageRoute(builder: (_) => ShopPage()));
                           },
-                          icon: Icon(Icons.shopping_bag, color: Colors.white,),
-                          label: Text("SHOP", style: GoogleFonts.redHatDisplay(
-                              color: Colors.white, fontSize: 15),),
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.grey[800],),
+                          icon: Icon(Icons.shopping_bag , color: Colors.white,),
+                          label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
+                          style: OutlinedButton.styleFrom( backgroundColor: Colors.grey[800],),
 
                         ),
                       ),
@@ -217,11 +203,10 @@ class MainMenuPage extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 10),
-                Text('LOCAL', style: GoogleFonts.redHatDisplay(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
+                Text('LOCAL', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold)),
                 SizedBox(height: 5),
                 SizedBox(
-                  height: 200,
+                  height: 180,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: localSongs.length,
@@ -237,7 +222,7 @@ class MainMenuPage extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          width: 150,
+                          width: 180,
                           margin: EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
@@ -253,11 +238,10 @@ class MainMenuPage extends StatelessWidget {
                 ),
 
                 SizedBox(height: 10),
-                Text('MY SONGS', style: GoogleFonts.redHatDisplay(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
+                Text('MY SONGS', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold)),
                 SizedBox(height: 5),
                 SizedBox(
-                  height: 200,
+                  height: 180,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: mySongs.length,
@@ -273,7 +257,7 @@ class MainMenuPage extends StatelessWidget {
                           );
                         },
                         child: Container(
-                          width: 150,
+                          width: 180,
                           margin: EdgeInsets.only(right: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
@@ -289,23 +273,18 @@ class MainMenuPage extends StatelessWidget {
                 ),
                 SizedBox(height: 15),
                 // Genre Buttons (2 per row)
-                Text('GENRES', style: GoogleFonts.redHatDisplay(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-                SizedBox(height: 10,),
+                Text('GENRES', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold)),
+                SizedBox(height: 10 ,),
                 Wrap(
                   spacing: 10,
                   runSpacing: 10,
                   children: [
                     SizedBox(width: 1,),
-                    genreButton(
-                        'POP', 'assets/blue-gradient-4000x4000-19871.png'),
-                    genreButton(
-                        'HIP HOP', 'assets/grey-gradient-4000x4000-19814.png'),
+                    genreButton('POP', 'assets/blue-gradient-4000x4000-19871.png'),
+                    genreButton('HIP HOP', 'assets/grey-gradient-4000x4000-19814.png'),
                     SizedBox(width: 1,),
-                    genreButton(
-                        'ROCK', 'assets/orange-gradient-4000x4000-19817.png'),
-                    genreButton(
-                        'CLASSIC', 'assets/grey-purple-4000x4000-19811.png'),
+                    genreButton('ROCK', 'assets/orange-gradient-4000x4000-19817.png'),
+                    genreButton('CLASSIC', 'assets/grey-purple-4000x4000-19811.png'),
                   ],
                 )
               ],

@@ -4,6 +4,7 @@ import 'LoginPage.dart';
 import 'ShopPage.dart';
 import 'MainMenuPage.dart';
 import 'Profile.dart';
+import 'SearchPage.dart';
 
 
 class MySongPage extends StatelessWidget {
@@ -130,6 +131,12 @@ class MySongPage extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
               ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => SongSearchPage()),
+                );
+              },
             ),
             SizedBox(height: 5),
             Row(
