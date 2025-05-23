@@ -1,7 +1,11 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:MOZX/mozx/SignUpPage.dart';
 import 'package:MOZX/mozx/LogInPage.dart';
+import 'package:MOZX/mozx/password.dart';
+import 'package:MOZX/mozx/SignUpPage.dart';
+import 'package:MOZX/mozx/ShopPage.dart';
+import 'package:MOZX/mozx/MySongPage.dart';
+import 'package:MOZX/mozx/MOZX.dart';
 
 
 class PasswordField extends StatefulWidget {
