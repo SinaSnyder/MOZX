@@ -11,6 +11,7 @@ import 'package:MOZX/mozx/NowPlayingPage.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:MOZX/mozx/PurchasePage.dart';
 import 'package:MOZX/mozx/ListOfSongs.dart';
+import 'package:MOZX/mozx/SearchPage.dart';
 
 
 
@@ -169,6 +170,4 @@ class SignIn extends StatelessWidget {
     );
   }
 }
-
-
 

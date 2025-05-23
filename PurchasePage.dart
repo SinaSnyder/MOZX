@@ -11,10 +11,11 @@ import 'package:MOZX/mozx/NowPlayingPage.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:MOZX/mozx/PurchasePage.dart';
 import 'package:MOZX/mozx/ListOfSongs.dart';
+import 'package:MOZX/mozx/SearchPage.dart';
 
 
 
-}class PurchasePage extends StatefulWidget {
+class PurchasePage extends StatefulWidget {
   final Song song;
   const PurchasePage({Key? key, required this.song}) : super(key: key);
 

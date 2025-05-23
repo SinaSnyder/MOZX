@@ -11,6 +11,7 @@ import 'package:MOZX/mozx/NowPlayingPage.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:MOZX/mozx/PurchasePage.dart';
 import 'package:MOZX/mozx/ListOfSongs.dart';
+import 'package:MOZX/mozx/SearchPage.dart';
 
 
 class ProfilePage extends StatelessWidget {
@@ -29,12 +30,7 @@ class ProfilePage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text('MOZX',
-            style: GoogleFonts.redHatDisplay(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            )),
+        title: Text('MOZX', style: GoogleFonts.redHatDisplay(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white,)),
         centerTitle: true,
       ),
       body: Padding(
