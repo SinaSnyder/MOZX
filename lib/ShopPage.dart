@@ -8,6 +8,7 @@ import 'ListOfSongs.dart';
 import 'Password.dart';
 
 
+
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
 
@@ -179,7 +180,17 @@ class ShopPage extends StatelessWidget {
                       context,
                       imagePath: 'assets/Picsart_25-05-21_14-27-49-496.jpg',
                       label: 'PERSIAN',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategorySongPage(
+                              category: 'PERSIAN',
+                              songs: PersianSongs,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     _buildCategoryButton(
                       context,
@@ -201,19 +212,49 @@ class ShopPage extends StatelessWidget {
                       context,
                       imagePath: 'assets/Picsart_25-05-21_14-26-58-835.jpg',
                       label: 'POP',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategorySongPage(
+                              category: 'POP',
+                              songs: PopSongs,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     _buildCategoryButton(
                       context,
                       imagePath: 'assets/Picsart_25-05-21_14-29-57-165.jpg',
                       label: 'HIP HOP',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategorySongPage(
+                              category: 'HIP HOP',
+                              songs: HipHopSongs,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     _buildCategoryButton(
                       context,
                       imagePath: 'assets/Picsart_25-05-21_14-30-41-081.jpg',
                       label: 'CLASSIC',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategorySongPage(
+                              category: 'CLASSIC',
+                              songs: PopSongs,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 )
