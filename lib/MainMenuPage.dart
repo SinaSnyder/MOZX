@@ -156,7 +156,7 @@ class MainMenuPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: SizedBox(
-                        width: 190,
+                        width: 150,
                         height: 45,
                         child: ElevatedButton.icon(
                           onPressed: () {
@@ -165,14 +165,23 @@ class MainMenuPage extends StatelessWidget {
                           icon: Icon(Icons.music_note , color: Colors.white,),
                           label: Text("MY SONGS" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
                           style: OutlinedButton.styleFrom( backgroundColor: Colors.grey[800],),
-
                         ),
+                      ),
+                    ),
+                    SizedBox(width: 10,),
+                    SizedBox(
+                      width: 70,
+                      height: 45,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.home , color: Colors.white,),
+                        style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.white), backgroundColor: Color.fromARGB(255, 20, 20, 20), foregroundColor: Colors.white),
                       ),
                     ),
                     SizedBox(width: 10),
                     Expanded(
                       child: SizedBox(
-                        width: 190,
+                        width: 150,
                         height: 45,
                         child: ElevatedButton.icon(
                           onPressed: () {
@@ -197,40 +206,31 @@ class MainMenuPage extends StatelessWidget {
                     itemCount: localSongs.length,
                     itemBuilder: (context, index) {
                       final song = localSongs[index];
-                      return Container(
-                        width: 200,
-                        margin: EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[700],
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.music_note, size: 50, color: Colors.white),
-                              SizedBox(height: 10),
-                              Text(song.title,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                              SizedBox(height: 10),
-                              ElevatedButton(
-                                onPressed: () async {
-                                  await player.play(AssetSource(song.assetPath));
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.blue,
-                                ),
-                                child: Text("Play", style: TextStyle(color: Colors.white)),
-                              )
-                            ],
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NowPlayingPage(song: song),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          margin: EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              image: AssetImage(song.coverPath),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       );
                     },
                   ),
                 ),
+
                 SizedBox(height: 10),
                 Text('MY SONGS', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold)),
                 SizedBox(height: 5),
@@ -241,36 +241,24 @@ class MainMenuPage extends StatelessWidget {
                     itemCount: mySongs.length,
                     itemBuilder: (context, index) {
                       final song = mySongs[index];
-                      return Container(
-                        width: 200,
-                        margin: EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[700],
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.music_note, size: 50, color: Colors.white),
-                              SizedBox(height: 10),
-                              Text(song.title,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                              SizedBox(height: 10),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => NowPlayingPage(song: song),
-                                    ),
-                                  );
-                                },
-                                child: Text("Play"),
-                              )
-                            ],
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NowPlayingPage(song: song),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 150,
+                          margin: EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              image: AssetImage(song.coverPath),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       );

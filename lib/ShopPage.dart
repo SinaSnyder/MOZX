@@ -4,8 +4,8 @@ import 'LoginPage.dart';
 import 'MySongPage.dart';
 import 'MainMenuPage.dart';
 import 'Profile.dart';
-
-
+import 'ListOfSongs.dart';
+import 'Password.dart';
 
 
 class ShopPage extends StatelessWidget {
@@ -185,7 +185,17 @@ class ShopPage extends StatelessWidget {
                       context,
                       imagePath: 'assets/Picsart_25-05-21_14-29-04-583.jpg',
                       label: 'ROCK',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CategorySongPage(
+                              category: 'ROCK',
+                              songs: RockSongs,
+                            ),
+                          ),
+                        );
+                      },
                     ),
                     _buildCategoryButton(
                       context,
@@ -252,7 +262,6 @@ Widget _buildCategoryButton(BuildContext context, {
     ),
   );
 }
-
 
 
 
