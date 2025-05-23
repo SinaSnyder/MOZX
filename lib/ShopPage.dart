@@ -7,13 +7,12 @@ import 'MainMenuPage.dart';
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor:Color.fromARGB(255, 20, 20, 20),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromARGB(255, 20, 20, 20),
         centerTitle: true,
         title: Text('MOZX' , style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold)),
         titleTextStyle: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),
@@ -113,7 +112,6 @@ class ShopPage extends StatelessWidget {
                   horizontal: 10.0,
                 ),
                 filled: true,
-
                 fillColor: Colors.grey[800],
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(40),
@@ -148,7 +146,7 @@ class ShopPage extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(Icons.shopping_bag , color: Colors.white,),
                     label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
-                    style: ElevatedButton.styleFrom(side: BorderSide(color: Colors.white), backgroundColor: Colors.black , foregroundColor: Colors.white ,),
+                    style: ElevatedButton.styleFrom(side: BorderSide(color: Colors.white), backgroundColor: Color.fromARGB(255, 20, 20, 20) , foregroundColor: Colors.white ,),
                   ),
                 ),
               ],

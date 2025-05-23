@@ -15,9 +15,9 @@ class MySongPage extends StatelessWidget {
     });
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 20, 20, 20),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromARGB(255, 20, 20, 20) ,
         centerTitle: true,
         title: Text('MOZX' , style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold)),
         titleTextStyle: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),
@@ -71,7 +71,6 @@ class MySongPage extends StatelessWidget {
                 },
               ),
               ListTile(
-
                 leading: Icon(Icons.person_outline_rounded , color : Colors.white),
                 title: Text('My Profile' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
                 onTap: () {},
@@ -136,8 +135,7 @@ class MySongPage extends StatelessWidget {
                     onPressed: () {},
                     icon: Icon(Icons.music_note , color: Colors.white,),
                     label: Text("MY SONGS" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
-                    style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.white), backgroundColor: Colors.black , foregroundColor: Colors.white ,),
-
+                    style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.white), backgroundColor: Color.fromARGB(255, 20, 20, 20) , foregroundColor: Colors.white ,),
 
                   ),
                 ),
