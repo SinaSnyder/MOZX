@@ -104,8 +104,7 @@ class SignIn extends StatelessWidget {
     ),
     SizedBox(height: 20),
     SizedBox(
-    width: 360,
-      height: 45,
+    width: 360,                  height: 45,
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(
@@ -137,3 +136,4 @@ class SignIn extends StatelessWidget {
     );
   }
 }
+
