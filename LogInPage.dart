@@ -119,14 +119,13 @@ class LoginPage extends StatelessWidget {
         context,
         MaterialPageRoute(builder: (context) => SignIn()),
       );
-    },
-    child: Text(
-    'or sign up',
-      style: GoogleFonts.redHatDisplay(
-        color: Colors.blue,
-        decoration: TextDecoration.underline,
-      ),
-    ),
+    }, child: Text(
+          'or sign up',
+          style: GoogleFonts.redHatDisplay(
+            color: Colors.blue,
+            decoration: TextDecoration.underline,
+          ),
+        ),
         ),
             ],
         ),

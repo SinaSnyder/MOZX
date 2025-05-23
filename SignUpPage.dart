@@ -43,7 +43,7 @@ class SignIn extends StatelessWidget {
     children: [
     SizedBox(height: 40),
     Text(
-    'SIGN IN',
+    'SIGN UP',
     style: GoogleFonts.interTight(
     fontSize: 28,
     fontWeight: FontWeight.bold,
@@ -102,32 +102,48 @@ class SignIn extends StatelessWidget {
     ),
     ),
     ),
-    SizedBox(height: 20),
-    SizedBox(
-    width: 360,                  height: 45,
-      child: ElevatedButton(
+    SizedBox(height: 20), SizedBox(
+        width: 360,
+        height: 45,
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => LoginPage()),
+            );
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(13),
+            ),
+          ),
+          child: Text(
+            'Sign up',
+            style: GoogleFonts.redHatDisplay(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+      SizedBox(height: 20,),
+      TextButton(
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => LoginPage()),
           );
         },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(13),
-          ),
-        ),
         child: Text(
-          'Sign in',
+          'or Log in',
           style: GoogleFonts.redHatDisplay(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-            color: Colors.white,
+            color: Colors.blue,
+            decoration: TextDecoration.underline,
           ),
         ),
       ),
-    ),
     ],
     ),
     ),
@@ -136,4 +152,5 @@ class SignIn extends StatelessWidget {
     );
   }
 }
+
 
