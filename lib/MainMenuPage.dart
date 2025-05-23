@@ -29,9 +29,17 @@ class MainMenuPage extends StatelessWidget {
         appBar: AppBar(
         centerTitle: true,
         title: Text('MOZX', style: GoogleFonts.redHatDisplay(),),
-    titleTextStyle: TextStyle(fontWeight: FontWeight.w900 , fontSize: 20),
+    titleTextStyle: TextStyle(fontWeight: FontWeight.bold , fontSize: 20),
     actions: [
-    Icon(Icons.person),
+    IconButton(
+    onPressed: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => LoginPage()),
+    );
+    },
+    icon: Icon(Icons.person),
+    ),
     SizedBox(width: 20,),
     ],
     ),
@@ -109,19 +117,19 @@ class MainMenuPage extends StatelessWidget {
     borderRadius: BorderRadius.circular(25),
     ),
     child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-    Expanded(
-    child: Container(
-      color: Colors.grey[800],
-      child: Center(child: Text('COVER')),
-    ),
-    ),
-    ],
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Container(
+            color: Colors.grey[800],
+            child: Center(child: Text('COVER')),
+          ),
+        ),
+      ],
     ),
     );
     },
-    )
+    ),
     ),
     ],
     )
@@ -129,4 +137,5 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 }
+
 
