@@ -1,5 +1,6 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'LoginPage.dart';
 
 void main () {
   runApp(mozxApp());
@@ -26,6 +27,7 @@ class MainMenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
         centerTitle: true,
         title: Text('MOZX', style: GoogleFonts.redHatDisplay(),),
@@ -116,17 +118,18 @@ class MainMenuPage extends StatelessWidget {
     color: Colors.grey[800],
     borderRadius: BorderRadius.circular(25),
     ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
-          child: Container(
-            color: Colors.grey[800],
-            child: Center(child: Text('COVER')),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              color: Colors.grey[800],
+              child: Center(child: Text('COVER')),
+            ),
           ),
-        ),
-      ],
-    ),
+        ],
+      ),
     );
     },
     ),
@@ -137,5 +140,6 @@ class MainMenuPage extends StatelessWidget {
     );
   }
 }
+
 
 
