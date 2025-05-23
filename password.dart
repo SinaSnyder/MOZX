@@ -198,6 +198,11 @@ List<Song> PopSongs = [
 ];
 
 
+List<Song> PersianSongs = [
+  Song(title: 'Mano Yadet Nemiad', artist: 'Kasra Zahedi', assetPath: 'Kasra Zahedi_Mano Yadet Nemiad (128).mp3', coverPath: 'assets/windows-11-stock-official-colorful-3840x2160-5666.jpg', price: "7.39" , likes: 5),
+];
+
+
 
 class Comment {
   final String author;

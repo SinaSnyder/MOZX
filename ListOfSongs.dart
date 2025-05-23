@@ -74,7 +74,12 @@ class _CategorySongPageState extends State<CategorySongPage> {
             subtitle: Text(song.artist, style: GoogleFonts.redHatDisplay(color: Colors.white70)),
             trailing: Text('\$${double.tryParse(song.price)?.toStringAsFixed(2) ?? "FREE"}', style: TextStyle(color: Colors.white),),
             onTap: () {
-              // Navigate to purchase page or song detail
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PurchasePage(song: song),
+                ),
+              );
             },
           );
         },

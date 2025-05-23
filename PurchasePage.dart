@@ -14,7 +14,7 @@ import 'package:MOZX/mozx/ListOfSongs.dart';
 
 
 
-class PurchasePage extends StatefulWidget {
+}class PurchasePage extends StatefulWidget {
   final Song song;
   const PurchasePage({Key? key, required this.song}) : super(key: key);
 
@@ -72,20 +72,25 @@ class _PurchasePageState extends State<PurchasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 20, 20, 20),
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromARGB(255, 20, 20, 20),
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.menu, color: Colors.white),
-          onPressed: () => Scaffold.of(context).openDrawer(),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () => Navigator.pop(context),
         ),
         centerTitle: true,
-        title: Text('MOZX', style: GoogleFonts.redHatDisplay(color: Colors.white)),
+        title: Text('MOZX', style: GoogleFonts.redHatDisplay(color: Colors.white , fontWeight: FontWeight.bold)),
         actions: [
           IconButton(
-            icon: Icon(Icons.person, color: Colors.white),
-            onPressed: () {},
+            icon: Icon(Icons.music_note_rounded, color: Colors.white),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => MySongPage()),
+              );
+            },
           ),
         ],
       ),
