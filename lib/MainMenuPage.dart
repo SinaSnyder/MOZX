@@ -45,7 +45,56 @@ class MainMenuPage extends StatelessWidget {
     SizedBox(width: 20,),
     ],
     ),
-    drawer: Drawer(),
+    drawer: Drawer(
+    child: Container(
+    color: Colors.grey[900],
+    child: ListView(
+    padding: EdgeInsets.zero,
+    children: [
+    DrawerHeader(
+    decoration: BoxDecoration(
+    image: DecorationImage(
+    image: NetworkImage('https://4kwallpapers.com/images/walls/thumbs_2t/5666.jpg'),
+    fit: BoxFit.cover
+    ),
+    ),
+    child: Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+    CircleAvatar(
+    radius: 30,
+    backgroundColor: Colors.black,
+    child: Icon(Icons.perm_identity , size: 40, color: Colors.white,),
+    ),
+    SizedBox(height: 10,),
+    Text("NAME" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontWeight: FontWeight.bold),)
+    ],
+    ),
+    ),
+    ListTile(
+    leading: Icon(Icons.person_pin , color : Colors.white),
+    title: Text('My Profile' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
+    onTap: () {},
+    ),
+    ListTile(
+    leading: Icon(Icons.music_note_outlined , color : Colors.white),
+    title: Text('My Songs' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
+    onTap: () {},
+    ),
+    ListTile(
+    leading: Icon(Icons.shopping_bag_outlined , color : Colors.white),
+    title: Text('Shop' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
+    onTap: () {},
+    ),
+    ListTile(
+    leading: Icon(Icons.settings_outlined , color : Colors.white),
+    title: Text('Setting' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
+    onTap: () {},
+    ),
+    ],
+    ),
+    ),
+    ),
     body: Padding(
     padding: EdgeInsets.all(12.0),
     child: Column(
@@ -69,71 +118,88 @@ class MainMenuPage extends StatelessWidget {
     ),
     SizedBox(height: 5),
     Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-    SizedBox(
-    width: 190,
-    height: 45,
-    child: ElevatedButton.icon(
-    onPressed: () {},
-    icon: Icon(Icons.music_note , color: Colors.white,),
-    label: Text("MY SONG" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
-    style: ElevatedButton.styleFrom( backgroundColor: Colors.grey[800]),
-    ),
-    ),
-    SizedBox(
-    width: 190,
-    height: 45,
-    child : ElevatedButton.icon(
-    onPressed: () {},
-    icon: Icon(Icons.shopping_bag , color: Colors.white,),
-    label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
-    style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
-    ),
-    ),
-    ],
-    ),
-    SizedBox( height: 5,),
-    Center(
-    child: Text(
-    'MOST POPULAR',
-    textAlign: TextAlign.center,
-    style: TextStyle(fontWeight: FontWeight.w900 , fontFamily: GoogleFonts.redHatDisplay().fontFamily ,),
-    ),
-    ),
-    Divider(color: Colors.white,),
-    Expanded(
-    child: GridView.builder(
-    itemCount: 7,
-    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount:2,
-    crossAxisSpacing: 8,
-    mainAxisSpacing: 8,
-    childAspectRatio: 4 / 4,
-    ) ,
-    itemBuilder: (context,index) {
-    return Container(
-    padding: EdgeInsets.all(8),
-    decoration: BoxDecoration(
-    color: Colors.grey[800],
 
-      borderRadius: BorderRadius.circular(25),
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        SizedBox(
+          width: 190,
+          height: 45,
+          child: ElevatedButton.icon(
+            onPressed: () {},
+            icon: Icon(Icons.music_note , color: Colors.white,),
+            label: Text("MY SONGS" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
+            style: ElevatedButton.styleFrom( backgroundColor: Colors.grey[800]),
+          ),
+        ),
+        SizedBox(
+          width: 190,
+          height: 45,
+          child : ElevatedButton.icon(
+            onPressed: () {},
+            icon: Icon(Icons.shopping_bag , color: Colors.white,),
+            label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[800]),
+          ),
+        ),
+      ],
     ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      SizedBox( height: 5,),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            child: Container(
-              color: Colors.grey[800],
-              child: Center(child: Text('COVER')),
-            ),
+          Text('MOST POPULAR' , style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w900 , fontSize: 20),),
+          PopupMenuButton<String>(
+            icon: Icon(Icons.sort , color: Colors.white,),
+            onSelected: (value) {
+              print('sort by $value');
+            },
+            itemBuilder: (BuildContext context) {
+              return [
+                const PopupMenuItem<String>(
+                  value: 'Name',
+                  child: Text('sort by Name'),
+                ),
+                const PopupMenuItem<String>(
+                  value: 'Date',
+                  child: Text('sort by Date'),
+                ),
+              ];
+            },
           ),
         ],
       ),
-    );
-    },
-    ),
-    ),
+      Divider(color: Colors.white,),
+      Expanded(
+        child: GridView.builder(
+          itemCount: 7,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount:2,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+            childAspectRatio: 4 / 4,
+          ) ,
+          itemBuilder: (context,index) {
+            return Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.grey[800],
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      color: Colors.grey[800],
+                      child: Center(child: Text('COVER')),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
     ],
     )
     )
