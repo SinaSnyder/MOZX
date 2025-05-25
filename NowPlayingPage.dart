@@ -120,10 +120,6 @@ class _NowPlayingPageState extends State<NowPlayingPage> {
   Future<void> _loadAndPlay() async {
     await _player.stop();
     await _player.play(AssetSource(_songs[_currentIndex].assetPath));
-    // setState(() {
-    //   _position = Duration.zero;
-    //   _duration = Duration.zero;
-    // });
   }
 
   void _toggleLike() {

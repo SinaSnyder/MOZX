@@ -237,3 +237,19 @@ class _PurchasePageState extends State<PurchasePage> {
     );
   }
 }
+
+
+
+class Comment {
+  final String author;
+  final String text;
+  int likes;
+  int dislikes;
+
+  Comment({
+    required this.author,
+    required this.text,
+    this.likes = 0,
+    this.dislikes = 0,
+  });
+}
