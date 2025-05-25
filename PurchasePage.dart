@@ -54,6 +54,21 @@ class _PurchasePageState extends State<PurchasePage> {
           _downloadProgress = 1;
           _isDownloading = false;
           _downloaded = true;
+
+
+          if (!mySongs.any((s) => s.assetPath == widget.song.assetPath)) {
+            mySongs.add(widget.song);
+          }
+          if (!AllMYSongs.any((s) => s.assetPath == widget.song.assetPath)) {
+            AllMYSongs.add(widget.song);
+          }
+
+
+          RockSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
+          HipHopSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
+          PopSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
+          PersianSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
+          ClassicSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
         }
       });
       return _isDownloading;

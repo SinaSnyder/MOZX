@@ -75,10 +75,13 @@ class _CategorySongPageState extends State<CategorySongPage> {
             subtitle: Text(song.artist, style: GoogleFonts.redHatDisplay(color: Colors.white70)),
             trailing: Text('\$${double.tryParse(song.price)?.toStringAsFixed(2) ?? "FREE"}', style: TextStyle(color: Colors.white),),
             onTap: () {
+              bool isFree = song.price.toLowerCase() == 'free' || song.price == '0.00';
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PurchasePage(song: song),
+                  builder: (context) => isFree
+                      ? NowPlayingPage(song: song)
+                      : PurchasePage(song: song),
                 ),
               );
             },

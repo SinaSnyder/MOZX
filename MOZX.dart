@@ -12,6 +12,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:MOZX/mozx/PurchasePage.dart';
 import 'package:MOZX/mozx/ListOfSongs.dart';
 import 'package:MOZX/mozx/SearchPage.dart';
+import 'dart:async';
 
 
 final player = AudioPlayer();
@@ -29,7 +30,7 @@ class mozxApp extends StatelessWidget {
       title: 'MOZX',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: MainMenuPage(),
+      home: SplashScreen(),
     );
   }
 }
@@ -48,21 +49,15 @@ class MainMenuPage extends StatelessWidget {
           backgroundColor: Color.fromARGB(255, 20, 20, 20),
           foregroundColor: Color.fromARGB(255, 20, 20, 20),
           elevation: 0,
-          title: Text(
-            'MOZX',
-            style: GoogleFonts.redHatDisplay(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          ),
+          title: Text('MOZX', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white,),),
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
+                if (UserData.isLoggedIn) {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => ProfilePage()));
+                } else {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
+                }
               },
               icon: Icon(Icons.person, color: Colors.white),
             ),
@@ -91,7 +86,7 @@ class MainMenuPage extends StatelessWidget {
                         child: Icon(Icons.perm_identity , size: 40, color: Colors.white,),
                       ),
                       SizedBox(height: 10,),
-                      Text("NAME" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontWeight: FontWeight.bold),)
+                      Text(UserData.name, style: GoogleFonts.redHatDisplay(color: Colors.white , fontWeight: FontWeight.bold),)
                     ],
                   ),
                 ),
@@ -99,10 +94,11 @@ class MainMenuPage extends StatelessWidget {
                   leading: Icon(Icons.person_outline_rounded , color : Colors.white),
                   title: Text('My Profile' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ProfilePage()),
-                    );
+                    if (UserData.isLoggedIn) {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ProfilePage()));
+                    } else {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
+                    }
                   },
                 ),
                 ListTile(
@@ -119,10 +115,11 @@ class MainMenuPage extends StatelessWidget {
                   leading: Icon(Icons.shopping_bag_outlined , color : Colors.white),
                   title: Text('Shop' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ShopPage()),
-                    );
+                    if (UserData.isLoggedIn) {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => ShopPage()));
+                    } else {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
+                    }
                   },
                 ),
                 ListTile(
@@ -140,7 +137,6 @@ class MainMenuPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Search Field
                 TextField(
                   decoration: InputDecoration(
                     hintText: 'Search',
@@ -197,7 +193,11 @@ class MainMenuPage extends StatelessWidget {
                         height: 45,
                         child: ElevatedButton.icon(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (_) => ShopPage()));
+                            if (UserData.isLoggedIn) {
+                              Navigator.push(context, MaterialPageRoute(builder: (_) => ShopPage()));
+                            } else {
+                              Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
+                            }
                           },
                           icon: Icon(Icons.shopping_bag , color: Colors.white,),
                           label: Text("SHOP" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontSize: 15),),
@@ -242,7 +242,6 @@ class MainMenuPage extends StatelessWidget {
                     },
                   ),
                 ),
-
                 SizedBox(height: 10),
                 Text('MY SONGS', style: GoogleFonts.redHatDisplay(color: Colors.white, fontWeight: FontWeight.bold)),
                 SizedBox(height: 5),
@@ -286,11 +285,51 @@ class MainMenuPage extends StatelessWidget {
                   runSpacing: 10,
                   children: [
                     SizedBox(width: 1,),
-                    genreButton('POP', 'assets/blue-gradient-4000x4000-19871.png'),
-                    genreButton('HIP HOP', 'assets/grey-gradient-4000x4000-19814.png'),
+                    genreButton('POP', 'assets/blue-gradient-4000x4000-19871.png' , () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CategorySongPage(
+                            category: 'POP',
+                            songs: AllPop,
+                          ),
+                        ),
+                      );
+                    }),
+                    genreButton('HIP HOP', 'assets/grey-purple-4000x4000-19811.png' , () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CategorySongPage(
+                            category: 'HIP HOP',
+                            songs: AllHipHop,
+                          ),
+                        ),
+                      );
+                    }),
                     SizedBox(width: 1,),
-                    genreButton('ROCK', 'assets/orange-gradient-4000x4000-19817.png'),
-                    genreButton('CLASSIC', 'assets/grey-purple-4000x4000-19811.png'),
+                    genreButton('ROCK', 'assets/orange-gradient-4000x4000-19817.png' , () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CategorySongPage(
+                            category: 'ROCK',
+                            songs: RockSongs,
+                          ),
+                        ),
+                      );
+                    }),
+                    genreButton('CLASSIC', 'assets/grey-gradient-4000x4000-19814.png' , () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CategorySongPage(
+                            category: 'CLASSIC',
+                            songs: ClassicSongs,
+                          ),
+                        ),
+                      );
+                    }),
                   ],
                 )
               ],
@@ -302,3 +341,49 @@ class MainMenuPage extends StatelessWidget {
 }
 
 
+
+
+
+
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  double _opacity = 0.0;
+
+  @override
+  void initState() {
+    super.initState();
+
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _opacity = 1.0;
+      });
+    });
+
+
+    Timer(Duration(seconds: 4), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => MainMenuPage()),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: AnimatedOpacity(
+          opacity: _opacity,
+          duration: Duration(seconds: 3),
+          child: Image.asset('assets/logo.png', width: 200, height: 200,),
+        ),
+      ),
+    );
+  }
+}

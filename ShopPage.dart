@@ -29,10 +29,11 @@ class ShopPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LoginPage()),
-              );
+              if (UserData.isLoggedIn) {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => ProfilePage()));
+              } else {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
+              }
             },
             icon: Icon(Icons.person),
           ),
@@ -61,7 +62,7 @@ class ShopPage extends StatelessWidget {
                       child: Icon(Icons.perm_identity , size: 40, color: Colors.white,),
                     ),
                     SizedBox(height: 10,),
-                    Text("NAME" , style: GoogleFonts.redHatDisplay(color: Colors.white , fontWeight: FontWeight.bold),),
+                    Text(UserData.name , style: GoogleFonts.redHatDisplay(color: Colors.white , fontWeight: FontWeight.bold),),
                   ],
                 ),
               ),
@@ -79,10 +80,11 @@ class ShopPage extends StatelessWidget {
                 leading: Icon(Icons.person_outline_rounded , color : Colors.white),
                 title: Text('My Profile' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ProfilePage()),
-                  );
+                  if (UserData.isLoggedIn) {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => ProfilePage()));
+                  } else {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage()));
+                  }
                 },
               ),
               ListTile(
