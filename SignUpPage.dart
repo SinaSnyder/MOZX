@@ -35,13 +35,7 @@ class SignIn extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text(
-          'MOZX',
-          style: GoogleFonts.redHatDisplay(
-            fontWeight: FontWeight.w900,
-            color: Colors.white,
-          ),
-        ),
+        title: Text('MOZX', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w900, color: Colors.white,),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

@@ -34,7 +34,7 @@ class _PurchasePageState extends State<PurchasePage> {
 
   List<Comment> _comments = [
     Comment(author: 'Hashem', text: 'Very good song!', likes: 1),
-    Comment(author: 'Sara', text: 'nice'),
+    Comment(author: 'Qmrs', text: 'nice'),
   ];
   final TextEditingController _commentController = TextEditingController();
 

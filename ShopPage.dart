@@ -108,9 +108,14 @@ class ShopPage extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.settings_outlined , color : Colors.white),
-                title: Text('Setting' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
-                onTap: () {},
+                leading: Icon(Icons.credit_card_rounded , color : Colors.white),
+                title: Text('Purchase' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaymentPage()),
+                  );
+                },
               ),
             ],
           ),
