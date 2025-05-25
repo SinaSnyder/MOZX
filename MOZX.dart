@@ -12,6 +12,9 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:MOZX/mozx/PurchasePage.dart';
 import 'package:MOZX/mozx/ListOfSongs.dart';
 import 'package:MOZX/mozx/SearchPage.dart';
+import 'package:MOZX/mozx/song.dart';
+import 'package:MOZX/mozx/aboutUsPage.dart';
+import 'package:MOZX/mozx/wallet.dart';
 import 'dart:async';
 
 
@@ -129,6 +132,16 @@ class MainMenuPage extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => PaymentPage()),
+                    );
+                  },
+                ),
+                ListTile(
+                  leading: Icon(Icons.wechat , color : Colors.white),
+                  title: Text('about us' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WritePage()),
                     );
                   },
                 ),
