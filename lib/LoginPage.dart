@@ -11,6 +11,10 @@ import 'NowPlayingPage.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'PurchasePage.dart';
 import 'ListOfSongs.dart';
+import 'SearchPage.dart';
+import 'song.dart';
+import 'wallet.dart';
+import 'dart:async';
 
 
 class LoginPage extends StatelessWidget {

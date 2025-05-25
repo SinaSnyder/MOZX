@@ -12,6 +12,9 @@ import 'package:audioplayers/audioplayers.dart';
 import 'PurchasePage.dart';
 import 'ListOfSongs.dart';
 import 'SearchPage.dart';
+import 'song.dart';
+import 'wallet.dart';
+import 'dart:async';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -127,3 +130,7 @@ class ProfilePage extends StatelessWidget {
   }
 
 }
+
+
+
+

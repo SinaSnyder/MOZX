@@ -12,6 +12,10 @@ import 'package:audioplayers/audioplayers.dart';
 import 'PurchasePage.dart';
 import 'ListOfSongs.dart';
 import 'SearchPage.dart';
+import 'song.dart';
+import 'wallet.dart';
+import 'dart:async';
+
 
 
 class PurchasePage extends StatefulWidget {
@@ -33,7 +37,7 @@ class _PurchasePageState extends State<PurchasePage> {
 
   List<Comment> _comments = [
     Comment(author: 'Hashem', text: 'Very good song!', likes: 1),
-    Comment(author: 'Sara', text: 'nice'),
+    Comment(author: 'Qmrs', text: 'nice'),
   ];
   final TextEditingController _commentController = TextEditingController();
 
@@ -234,4 +238,20 @@ class _PurchasePageState extends State<PurchasePage> {
       ),
     );
   }
+}
+
+
+
+class Comment {
+  final String author;
+  final String text;
+  int likes;
+  int dislikes;
+
+  Comment({
+    required this.author,
+    required this.text,
+    this.likes = 0,
+    this.dislikes = 0,
+  });
 }

@@ -12,6 +12,10 @@ import 'package:audioplayers/audioplayers.dart';
 import 'PurchasePage.dart';
 import 'ListOfSongs.dart';
 import 'SearchPage.dart';
+import 'song.dart';
+import 'wallet.dart';
+import 'dart:async';
+
 
 
 class SignIn extends StatelessWidget {
@@ -34,13 +38,7 @@ class SignIn extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text(
-          'MOZX',
-          style: GoogleFonts.redHatDisplay(
-            fontWeight: FontWeight.w900,
-            color: Colors.white,
-          ),
-        ),
+        title: Text('MOZX', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w900, color: Colors.white,),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(

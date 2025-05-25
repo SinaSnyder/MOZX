@@ -12,6 +12,11 @@ import 'package:audioplayers/audioplayers.dart';
 import 'PurchasePage.dart';
 import 'ListOfSongs.dart';
 import 'SearchPage.dart';
+import 'song.dart';
+import 'wallet.dart';
+import 'aboutUsPage.dart';
+import 'dart:async';
+
 
 class ShopPage extends StatelessWidget {
   const ShopPage({super.key});
@@ -107,9 +112,24 @@ class ShopPage extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: Icon(Icons.settings_outlined , color : Colors.white),
-                title: Text('Setting' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
-                onTap: () {},
+                leading: Icon(Icons.credit_card_rounded , color : Colors.white),
+                title: Text('Purchase' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaymentPage()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.wechat , color : Colors.white),
+                title: Text('about us' , style: GoogleFonts.redHatDisplay(color: Colors.white),),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => WritePage()),
+                  );
+                },
               ),
             ],
           ),
@@ -277,6 +297,7 @@ class ShopPage extends StatelessWidget {
     );
   }
 }
+
 
 
 Widget _buildCategoryButton(BuildContext context, {
