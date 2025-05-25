@@ -1,7 +1,17 @@
-import 'Password.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'LogInPage.dart';
+import 'Password.dart';
+import 'SignUpPage.dart';
+import 'ShopPage.dart';
 import 'MySongPage.dart';
+import 'MOZX.dart';
+import 'Profile.dart';
+import 'NowPlayingPage.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'PurchasePage.dart';
+import 'ListOfSongs.dart';
+import 'SearchPage.dart';
 
 
 class PurchasePage extends StatefulWidget {
@@ -43,6 +53,21 @@ class _PurchasePageState extends State<PurchasePage> {
           _downloadProgress = 1;
           _isDownloading = false;
           _downloaded = true;
+
+
+          if (!mySongs.any((s) => s.assetPath == widget.song.assetPath)) {
+            mySongs.add(widget.song);
+          }
+          if (!AllMYSongs.any((s) => s.assetPath == widget.song.assetPath)) {
+            AllMYSongs.add(widget.song);
+          }
+
+
+          RockSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
+          HipHopSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
+          PopSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
+          PersianSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
+          ClassicSongs.removeWhere((s) => s.assetPath == widget.song.assetPath);
         }
       });
       return _isDownloading;

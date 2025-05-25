@@ -1,8 +1,16 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'MainMenuPage.dart';
-import 'SignupPage.dart';
+import 'LogInPage.dart';
 import 'Password.dart';
+import 'SignUpPage.dart';
+import 'ShopPage.dart';
+import 'MySongPage.dart';
+import 'MOZX.dart';
+import 'Profile.dart';
+import 'NowPlayingPage.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'PurchasePage.dart';
+import 'ListOfSongs.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -22,13 +30,7 @@ class LoginPage extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Text(
-          'MOZX',
-          style: GoogleFonts.redHatDisplay(
-            fontWeight: FontWeight.w900,
-            color: Colors.white,
-          ),
-        ),
+        title: Text('MOZX', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.w900, color: Colors.white,),),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -78,7 +80,11 @@ class LoginPage extends StatelessWidget {
                         ),
                       );
                     } else {
-                      Navigator.push(
+                      UserData.login(
+                        username: usernameController.text,
+                        email: usernameController.text + "@gmail.com",
+                      );
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => MainMenuPage()),
                       );
@@ -90,14 +96,7 @@ class LoginPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(13),
                     ),
                   ),
-                  child: Text(
-                    'Log in',
-                    style: GoogleFonts.redHatDisplay(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: Colors.white,
-                    ),
-                  ),
+                  child: Text('Log in', style: GoogleFonts.redHatDisplay(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white,),),
                 ),
               ),
               SizedBox(height: 20),
@@ -129,5 +128,29 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+
+
+
+class UserData {
+  static bool isLoggedIn = false;
+
+  static String name = '';
+  static String email = '';
+  static String phone = '09123456789';
+  static String wallet = '20.00';
+
+  static void login({required String username, required String email}) {
+    isLoggedIn = true;
+    name = username;
+    UserData.email = email;
+  }
+
+  static void logout() {
+    isLoggedIn = false;
+    name = '';
+    email = '';
   }
 }

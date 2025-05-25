@@ -1,7 +1,17 @@
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'LoginPage.dart';
+import 'LogInPage.dart';
 import 'Password.dart';
+import 'SignUpPage.dart';
+import 'ShopPage.dart';
+import 'MySongPage.dart';
+import 'MOZX.dart';
+import 'Profile.dart';
+import 'NowPlayingPage.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'PurchasePage.dart';
+import 'ListOfSongs.dart';
+import 'SearchPage.dart';
 
 
 class SignIn extends StatelessWidget {

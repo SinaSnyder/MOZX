@@ -1,5 +1,18 @@
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
+import 'LogInPage.dart';
+import 'Password.dart';
+import 'SignUpPage.dart';
+import 'ShopPage.dart';
+import 'MySongPage.dart';
+import 'MOZX.dart';
+import 'Profile.dart';
+import 'NowPlayingPage.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'PurchasePage.dart';
+import 'ListOfSongs.dart';
+import 'SearchPage.dart';
+
 
 class PasswordField extends StatefulWidget {
   final TextEditingController controller;
@@ -88,14 +101,12 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
 }
 
 
-Widget genreButton(String label, String imagePath) {
+Widget genreButton(String label, String imagePath, VoidCallback onTap) {
   return SizedBox(
     width: 180,
     height: 100,
     child: ElevatedButton(
-      onPressed: () {
-        // Filter or navigate
-      },
+      onPressed: onTap,
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.zero,
         backgroundColor: Colors.transparent,
@@ -134,12 +145,13 @@ Widget genreButton(String label, String imagePath) {
 
 
 
+
 class Song {
   final String title;
   final String artist;
   final String assetPath;
   final String coverPath;
-  final int likes;
+  int likes;
   final String price;
 
   Song({
@@ -162,6 +174,15 @@ List<Song> localSongs = [
 
 
 List<Song> mySongs = [
+  Song(title: 'Love Again', artist: 'Dua Lipa', assetPath: 'Love Again_Dua Lipa.mp3', coverPath: 'assets/Picsart_25-05-22_22-58-26-524.jpg', likes: 6 , price: "free"),
+  Song(title: 'The Scotts', artist: 'Travis Scott & Kid Cudi', assetPath: 'the_scotts_kid.mp3', coverPath: 'assets/Picsart_25-05-22_22-58-26-524.jpg', price: "free" , likes: 7),
+];
+
+
+List<Song> AllMYSongs = [
+  Song(title: 'WTF', artist: "Hugel Delsa" , assetPath: 'wtf_hugel.mp3' , coverPath: 'assets/Picsart_25-05-22_23-00-43-699.jpg' , likes: 8 , price: "free"),
+  Song(title: 'FE!N', artist: 'Travis Scott' ,  assetPath: 'FE!N_Travis Scott, Playboi Carti.mp3' , coverPath: 'assets/Picsart_25-05-22_23-00-43-699.jpg' , likes: 10 , price: "free"),
+  Song(title: 'Star Boy', artist: 'The Weekend' , assetPath: 'starboy.mp3' , coverPath: 'assets/Picsart_25-05-22_23-00-43-699.jpg' , likes: 5 , price: "free"),
   Song(title: 'Love Again', artist: 'Dua Lipa', assetPath: 'Love Again_Dua Lipa.mp3', coverPath: 'assets/Picsart_25-05-22_22-58-26-524.jpg', likes: 6 , price: "free"),
   Song(title: 'The Scotts', artist: 'Travis Scott & Kid Cudi', assetPath: 'the_scotts_kid.mp3', coverPath: 'assets/Picsart_25-05-22_22-58-26-524.jpg', price: "free" , likes: 7),
 ];
@@ -198,6 +219,23 @@ List<Song> ClassicSongs = [
 ];
 
 
+List<Song> AllHipHop = [
+  Song(title: 'FE!N', artist: 'Travis Scott' ,  assetPath: 'FE!N_Travis Scott, Playboi Carti.mp3' , coverPath: 'assets/Picsart_25-05-22_23-00-43-699.jpg' , likes: 10 , price: "free"),
+  Song(title: 'The Scotts', artist: 'Travis Scott & Kid Cudi', assetPath: 'the_scotts_kid.mp3', coverPath: 'assets/Picsart_25-05-22_22-58-26-524.jpg', price: "free" , likes: 7),
+  Song(title: 'Flashing Lights', artist: 'Drake', assetPath: 'Flashing_Lights_(feat. Dwele)_Kanye West.mp3', coverPath: 'assets/Picsart_25-05-22_23-01-19-759.jpg', price: '3.49' , likes: 4),
+  Song(title: "Big Dawgs", artist: 'Hanu Mankind', assetPath: 'HanuMankind_Ft_Kalmi_Big_Dawgs_musicdel.ir.mp3', coverPath: 'assets/Picsart_25-05-22_23-01-19-759.jpg', price: '2.99' , likes: 2),
+];
+
+
+List<Song> AllPop = [
+  Song(title: 'Dreamers', artist: 'Savoir Adore', assetPath: '16_Dreamers_Savoir_Adore.mp3', coverPath: 'assets/Picsart_25-05-22_22-59-54-606.jpg', price: '4.30' , likes: 3),
+  Song(title: 'Die Young', artist: 'Kesha', assetPath: 'Die Young_Kesha.mp3', coverPath: 'assets/Picsart_25-05-22_22-59-54-606.jpg', price: '1.99' , likes: 5),
+  Song(title: 'Break My Heart', artist: 'Dua lipa', assetPath: 'Dua_Lipa_Break_My_Heart_dibamusics.mp3', coverPath: 'assets/Picsart_25-05-22_22-59-54-606.jpg', price: '6.00' , likes: 3),
+  Song(title: 'WTF', artist: "Hugel Delsa" , assetPath: 'wtf_hugel.mp3' , coverPath: 'assets/Picsart_25-05-22_23-00-43-699.jpg' , likes: 8 , price: "free"),
+  Song(title: 'Star Boy', artist: 'The Weekend' , assetPath: 'starboy.mp3' , coverPath: 'assets/Picsart_25-05-22_23-00-43-699.jpg' , likes: 5 , price: "free"),
+  Song(title: 'Love Again', artist: 'Dua Lipa', assetPath: 'Love Again_Dua Lipa.mp3', coverPath: 'assets/Picsart_25-05-22_22-58-26-524.jpg', likes: 6 , price: "free"),
+];
+
 
 class Comment {
   final String author;
@@ -212,4 +250,6 @@ class Comment {
     this.dislikes = 0,
   });
 }
+
+
 

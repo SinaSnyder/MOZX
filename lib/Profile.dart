@@ -1,5 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
+import 'LogInPage.dart';
+import 'Password.dart';
+import 'SignUpPage.dart';
+import 'ShopPage.dart';
+import 'MySongPage.dart';
+import 'MOZX.dart';
+import 'Profile.dart';
+import 'NowPlayingPage.dart';
+import 'package:audioplayers/audioplayers.dart';
+import 'PurchasePage.dart';
+import 'ListOfSongs.dart';
+import 'SearchPage.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -32,7 +44,7 @@ class ProfilePage extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              'NAME',
+              UserData.name,
               style: GoogleFonts.redHatDisplay(
                 fontSize: 24,
                 color: Colors.white,
@@ -55,11 +67,11 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 30),
-            _buildTextField(label: 'Gmail'),
+            _buildTextField(label: 'Gmail' , initialText: UserData.email),
             SizedBox(height: 15),
-            _buildTextField(label: 'Phone number'),
+            _buildTextField(label: 'Phone number' , initialText: UserData.phone),
             SizedBox(height: 15),
-            _buildTextField(label: 'Wallet'),
+            _buildTextField(label: 'Wallet' , initialText: UserData.wallet),
             SizedBox(height: 30),
             SizedBox(
               width: double.infinity,
@@ -71,7 +83,13 @@ class ProfilePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  UserData.logout();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
                 child: Text(
                   'Log Out',
                   style: GoogleFonts.redHatDisplay(
@@ -87,9 +105,12 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildTextField({required String label}) {
+
+  Widget _buildTextField({required String label , required String initialText}) {
     return TextField(
+      controller: TextEditingController(text: initialText),
       style: TextStyle(color: Colors.white),
+      readOnly: true,
       decoration: InputDecoration(
         labelText: label,
         labelStyle: GoogleFonts.redHatDisplay(color: Colors.white),
@@ -104,5 +125,5 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
-}
 
+}

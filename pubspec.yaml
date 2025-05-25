@@ -62,7 +62,7 @@ flutter:
 
 
   assets:
-    - assets/ChatGPT Image May 5, 2025, 12_14_20 AM.png
+    - assets/logo.png
     - assets/windows-11-stock-official-colorful-3840x2160-5666.jpg
     - assets/blue-gradient-4000x4000-19871.png
     - assets/grey-gradient-4000x4000-19814.png
@@ -132,4 +132,4 @@ flutter:
 flutter_icons:
   android: true
   ios: true
-  image_path: "assets/ChatGPT Image May 5, 2025, 12_14_20 AM.png"
+  image_path: "assets/logo.png"

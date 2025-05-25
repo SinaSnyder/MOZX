@@ -1,7 +1,18 @@
-import 'Password.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
+import 'LogInPage.dart';
+import 'Password.dart';
+import 'SignUpPage.dart';
+import 'ShopPage.dart';
+import 'MySongPage.dart';
+import 'MOZX.dart';
+import 'Profile.dart';
+import 'NowPlayingPage.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'PurchasePage.dart';
+import 'ListOfSongs.dart';
+import 'SearchPage.dart';
+
 
 class CategorySongPage extends StatefulWidget {
   final String category;
@@ -63,10 +74,13 @@ class _CategorySongPageState extends State<CategorySongPage> {
             subtitle: Text(song.artist, style: GoogleFonts.redHatDisplay(color: Colors.white70)),
             trailing: Text('\$${double.tryParse(song.price)?.toStringAsFixed(2) ?? "FREE"}', style: TextStyle(color: Colors.white),),
             onTap: () {
+              bool isFree = song.price.toLowerCase() == 'free' || song.price == '0.00';
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PurchasePage(song: song),
+                  builder: (context) => isFree
+                      ? NowPlayingPage(song: song)
+                      : PurchasePage(song: song),
                 ),
               );
             },
