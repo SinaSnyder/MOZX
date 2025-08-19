@@ -72,7 +72,7 @@ public class ShopController {
         var c = shopService.voteComment(commentId, userIdFromHeader(uid), CommentVote.VoteType.DISLIKE);
         return toDto(c.getId(), c.getUserId(), c.getText(), c.getLikes(), c.getDislikes());
     }
-    
+
     @PostMapping("/songs/{songId}/download")
     public void addDownload(@PathVariable String songId,
                             @RequestHeader(value="X-User-Id", required=false) String uid){
