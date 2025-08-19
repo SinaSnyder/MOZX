@@ -17,7 +17,7 @@ public class SongLike {
     private Long userId;
 
     @Enumerated(EnumType.STRING)
-    private VoteType type; 
+    private VoteType type;
 
     public enum VoteType { LIKE, DISLIKE }
 }
