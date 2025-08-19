@@ -16,7 +16,7 @@ import 'song.dart';
 import 'wallet.dart';
 import 'dart:async';
 import 'config.dart';
-
+import 'commentAPI.dart';
 
 
 
@@ -37,10 +37,7 @@ class _PurchasePageState extends State<PurchasePage> {
   bool _isDownloading = false;
   bool _downloaded = false;
 
-  List<Comment> _comments = [
-    Comment(author: 'Hashem', text: 'Very good song!', likes: 1),
-    Comment(author: 'Qmrs', text: 'nice'),
-  ];
+  List<Comment> _comments = [];
   final TextEditingController _commentController = TextEditingController();
 
 
@@ -81,14 +78,46 @@ class _PurchasePageState extends State<PurchasePage> {
   }
 
 
-  void _postComment() {
+  Future<void> _postComment() async {
     final text = _commentController.text.trim();
     if (text.isEmpty || !_downloaded) return;
-    setState(() {
-      _comments.insert(0, Comment(author: 'You', text: text));
-      _commentController.clear();
-    });
+
+    try {
+      await addComment(widget.song.assetPath, text, 1);
+      setState(() {
+        _comments.insert(0, Comment(author: 'You', text: text));
+        _commentController.clear();
+      });
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error: $e" , style: TextStyle(color: Colors.white),),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      );
+    }
   }
+
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchComments();
+  }
+
+  Future<void> _fetchComments() async {
+    try {
+      final comments = await getComments(widget.song.assetPath);
+      setState(() => _comments = comments);
+    } catch (e) {
+      print("Error : $e");
+    }
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
