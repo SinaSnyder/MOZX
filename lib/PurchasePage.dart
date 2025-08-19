@@ -9,7 +9,6 @@ import 'MOZX.dart';
 import 'Profile.dart';
 import 'NowPlayingPage.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'PurchasePage.dart';
 import 'ListOfSongs.dart';
 import 'SearchPage.dart';
 import 'song.dart';
@@ -40,6 +39,22 @@ class _PurchasePageState extends State<PurchasePage> {
   List<Comment> _comments = [];
   final TextEditingController _commentController = TextEditingController();
 
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchComments();
+  }
+
+
+  Future<void> _fetchComments() async {
+    try {
+      final comments = await getComments(widget.song.assetPath);
+      setState(() => _comments = comments);
+    } catch (e) {
+      print("Error : $e");
+    }
+  }
 
   void _startDownload() {
     if (_downloaded) return;
@@ -100,23 +115,6 @@ class _PurchasePageState extends State<PurchasePage> {
       );
     }
   }
-
-
-  @override
-  void initState() {
-    super.initState();
-    _fetchComments();
-  }
-
-  Future<void> _fetchComments() async {
-    try {
-      final comments = await getComments(widget.song.assetPath);
-      setState(() => _comments = comments);
-    } catch (e) {
-      print("Error : $e");
-    }
-  }
-
 
 
   @override

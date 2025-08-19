@@ -18,7 +18,7 @@ public class ShopService {
     private final CommentVoteRepository commentVoteRepo;
     private final DownloadRepository downloadRepo;
 
-    // --- SONG LIKES ---
+
     @Transactional
     public LikeSummaryDto likeSong(String songId, Long userId, SongLike.VoteType type){
         var existing = songLikeRepo.findBySongIdAndUserId(songId, userId);
