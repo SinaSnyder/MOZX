@@ -50,7 +50,7 @@ class _PurchasePageState extends State<PurchasePage> {
   Future<void> _fetchComments() async {
     try {
       final comments = await getComments(widget.song.assetPath);
-      setState(() => _comments = comments);
+      setState(() => _comments = comments.cast<Comment>());
     } catch (e) {
       print("Error : $e");
     }
