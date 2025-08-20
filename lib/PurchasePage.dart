@@ -95,7 +95,7 @@ class _PurchasePageState extends State<PurchasePage> {
 
   Future<void> _postComment() async {
     final text = _commentController.text.trim();
-    if (text.isEmpty || !_downloaded) return;
+    if (text.isEmpty) return;
 
     try {
       await addComment(widget.song.assetPath, text, 1);
@@ -216,7 +216,7 @@ class _PurchasePageState extends State<PurchasePage> {
                 Expanded(
                   child: TextField(
                     controller: _commentController,
-                    enabled: _downloaded,
+                    //enabled: _downloaded,
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
                       hintText: _downloaded ? 'Comment...' : 'Purchase to comment',
@@ -233,7 +233,7 @@ class _PurchasePageState extends State<PurchasePage> {
                 ),
                 SizedBox(width: 8),
                 IconButton(
-                  icon: Icon(Icons.send, color: _downloaded ? Colors.white : Colors.grey),
+                  icon: Icon(Icons.send, color: Colors.white),
                   onPressed: _downloaded ? _postComment : null,
                 ),
               ],
