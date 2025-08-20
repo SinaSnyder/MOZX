@@ -3,9 +3,10 @@ package com.example.testfive.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import com.example.testfive.dto.*;
 
-@Entity @Table(name = "comment")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Entity
+@Table(name = "comments")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,13 +14,13 @@ public class Comment {
 
     private String songId;
 
-    private Long userId;
-
     private String text;
 
     private int likes = 0;
 
     private int dislikes = 0;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @ManyToOne
+    @JoinColumn(name = "user_name", referencedColumnName = "name")
+    private Person user;
 }

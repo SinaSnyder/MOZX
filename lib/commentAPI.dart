@@ -38,7 +38,7 @@ Future<void> addComment(String songId, String text, int userId) async {
   );
 
   if (res.statusCode != 200) {
-    throw Exception("Error");
+    throw Exception("Error1");
   }
 }
 
@@ -50,6 +50,6 @@ Future<List<Comment>> getComments(String songId) async {
     final List<dynamic> data = jsonDecode(res.body);
     return data.map((c) => Comment.fromJson(c)).toList();
   } else {
-    throw Exception("Error");
+    throw Exception("Error2");
   }
 }
