@@ -178,11 +178,9 @@ class _PurchasePageState extends State<PurchasePage> {
                               i < _rating ? Icons.favorite : Icons.favorite_border,
                               color: i < _rating ? Colors.red : Colors.white,
                             ),
-                            onPressed: _downloaded
-                                ? () {
+                            onPressed: () {
                               setState(() => _rating = i + 1);
-                            }
-                                : null,
+                            },
                           );
                         }),
                       ),
