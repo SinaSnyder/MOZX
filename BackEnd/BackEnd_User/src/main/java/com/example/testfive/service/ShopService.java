@@ -51,7 +51,7 @@ public class ShopService {
     }
 
     public List<Comment> listComments(String songId){
-        return commentRepo.findBySongIdOrderByCreatedAtDesc(songId);
+        return commentRepo.findBySongId(songId);
     }
 
     @Transactional
