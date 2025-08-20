@@ -27,18 +27,29 @@ class Comment {
 
 Future<void> addComment(String songId, String text, int userId) async {
   final url = Uri.parse("$baseUrl/api/comments");
-  final res = await http.post(
-    url,
-    headers: {"Content-Type": "application/json"},
-    body: jsonEncode({
-      "songId": songId,
-      "userId": userId,
-      "text": text,
-    }),
-  );
+  print("Sending comment to: $url");
+  print("Payload: {songId: $songId, userId: $userId, text: $text}");
 
-  if (res.statusCode != 200) {
-    throw Exception("Error1");
+  try {
+    final res = await http.post(
+      url,
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        "songId": songId,
+        "userId": userId,
+        "text": text,
+      }),
+    );
+
+    print("Response status: ${res.statusCode}");
+    print("Response body: ${res.body}");
+
+    if (res.statusCode != 200) {
+      throw Exception("HTTP Error: ${res.statusCode}, Body: ${res.body}");
+    }
+  } catch (e) {
+    print("Full error: $e");
+    rethrow;
   }
 }
 

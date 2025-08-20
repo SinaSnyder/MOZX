@@ -7,7 +7,12 @@ import com.example.testfive.dto.*;
 
 @Entity
 @Table(name = "comments")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Comment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,7 +22,6 @@ public class Comment {
     private String text;
 
     private int likes = 0;
-
     private int dislikes = 0;
 
     @ManyToOne

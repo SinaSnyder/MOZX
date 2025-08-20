@@ -4,5 +4,8 @@ import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class CommentRequest {
+    private String songId;
     private String text;
+    private String userName;
+
 }
