@@ -6,6 +6,5 @@ import lombok.*;
 public class CommentRequest {
     private String songId;
     private String text;
-    private String userName;
-
+    private Long userId;
 }

@@ -7,7 +7,7 @@ import com.example.testfive.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import com.example.testfive.model.*;
 import java.util.Optional;
 
 @Service

@@ -24,9 +24,8 @@ public class CommentController {
 
     @PostMapping
     public ResponseEntity<Comment> addComment(@RequestBody CommentRequest request) {
-        Person user = personRepository.findById(request.getUserName())
+        User user = personRepository.findById(request.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
-
 
         Comment comment = new Comment();
         comment.setSongId(request.getSongId());
@@ -35,6 +34,7 @@ public class CommentController {
 
         return ResponseEntity.ok(commentService.saveComment(comment));
     }
+
 
     @GetMapping("/{songId}")
     public ResponseEntity<List<Comment>> getComments(@PathVariable String songId) {

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 import com.example.testfive.dto.*;
+import com.example.testfive.model.*;
 
 @Entity
 @Table(name = "comments")
@@ -26,5 +27,5 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "user_name", referencedColumnName = "name")
-    private Person user;
+    private User user;
 }

@@ -17,6 +17,7 @@ public class ShopService {
     private final CommentRepository commentRepo;
     private final CommentVoteRepository commentVoteRepo;
     private final DownloadRepository downloadRepo;
+    private final UserRepository UserRepository;
 
 
     @Transactional
@@ -45,10 +46,18 @@ public class ShopService {
 
 
     @Transactional
-    public Comment addComment(String songId, Long userId, String text){
-        var c = Comment.builder().songId(songId).userId(userId).text(text).build();
+    public Comment addComment(String songId, Long userId, String text) {
+        var user = UserRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Comment c = new Comment();
+        c.setSongId(songId);
+        c.setText(text);
+        c.setUser(user);
         return commentRepo.save(c);
     }
+
+
 
     public List<Comment> listComments(String songId){
         return commentRepo.findBySongId(songId);
@@ -57,7 +66,7 @@ public class ShopService {
     @Transactional
     public void deleteComment(Long commentId, Long userId, boolean isAdmin){
         var c = commentRepo.findById(commentId).orElseThrow();
-        if(!isAdmin && !c.getUserId().equals(userId)){
+        if (!isAdmin && !c.getUser().getId().equals(userId)) {
             throw new RuntimeException("Not allowed");
         }
         commentRepo.delete(c);

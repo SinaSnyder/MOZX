@@ -36,7 +36,7 @@ Future<void> addComment(String songId, String text, int userId) async {
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
         "songId": songId,
-        "userId": userId,
+        "username": userId,
         "text": text,
       }),
     );

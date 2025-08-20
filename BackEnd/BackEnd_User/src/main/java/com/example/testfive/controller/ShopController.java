@@ -1,9 +1,10 @@
 package com.example.testfive.controller;
 
 import com.example.testfive.dto.*;
-import com.example.testfive.entity.CommentVote;
-import com.example.testfive.entity.SongLike;
-import com.example.testfive.service.ShopService;
+import com.example.testfive.entity.*;
+import com.example.testfive.model.*;
+import com.example.testfive.repository.*;
+import com.example.testfive.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.stream.Collectors;
@@ -43,13 +44,13 @@ public class ShopController {
                                       @RequestBody CommentRequest req,
                                       @RequestHeader(value="X-User-Id", required=false) String uid){
         var c = shopService.addComment(songId, userIdFromHeader(uid), req.getText());
-        return toDto(c.getId(), c.getUserId(), c.getText(), c.getLikes(), c.getDislikes());
+        return toDto(c.getId(), c.getUser().getId(), c.getText(), c.getLikes(), c.getDislikes());
     }
 
     @GetMapping("/songs/{songId}/comments")
     public java.util.List<CommentResponse> listComments(@PathVariable String songId){
         return shopService.listComments(songId).stream()
-                .map(c -> toDto(c.getId(), c.getUserId(), c.getText(), c.getLikes(), c.getDislikes()))
+                .map(c -> toDto(c.getId(), c.getUser().getId(), c.getText(), c.getLikes(), c.getDislikes()))
                 .collect(Collectors.toList());
     }
 
@@ -63,14 +64,14 @@ public class ShopController {
     public CommentResponse likeComment(@PathVariable Long commentId,
                                        @RequestHeader(value="X-User-Id", required=false) String uid){
         var c = shopService.voteComment(commentId, userIdFromHeader(uid), CommentVote.VoteType.LIKE);
-        return toDto(c.getId(), c.getUserId(), c.getText(), c.getLikes(), c.getDislikes());
+        return toDto(c.getId(), c.getUser().getId(), c.getText(), c.getLikes(), c.getDislikes());
     }
 
     @PostMapping("/comments/{commentId}/dislike")
     public CommentResponse dislikeComment(@PathVariable Long commentId,
                                           @RequestHeader(value="X-User-Id", required=false) String uid){
         var c = shopService.voteComment(commentId, userIdFromHeader(uid), CommentVote.VoteType.DISLIKE);
-        return toDto(c.getId(), c.getUserId(), c.getText(), c.getLikes(), c.getDislikes());
+        return toDto(c.getId(), c.getUser().getId(), c.getText(), c.getLikes(), c.getDislikes());
     }
 
     @PostMapping("/songs/{songId}/download")

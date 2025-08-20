@@ -1,9 +1,9 @@
 package com.example.testfive.repository;
 
-import com.example.testfive.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.testfive.model.User;
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<Person, String> {
-    Optional<Person> findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 }
