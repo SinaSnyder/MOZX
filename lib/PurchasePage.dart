@@ -232,7 +232,7 @@ class _PurchasePageState extends State<PurchasePage> {
                 SizedBox(width: 8),
                 IconButton(
                   icon: Icon(Icons.send, color: Colors.white),
-                  onPressed: _downloaded ? _postComment : null,
+                  onPressed: _postComment,
                 ),
               ],
             ),
