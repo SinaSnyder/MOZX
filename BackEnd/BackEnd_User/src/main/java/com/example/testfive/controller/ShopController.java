@@ -3,10 +3,10 @@ package com.example.testfive.controller;
 import com.example.testfive.dto.*;
 import com.example.testfive.entity.*;
 import com.example.testfive.model.*;
-import com.example.testfive.repository.*;
 import com.example.testfive.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.stream.Collectors;
 
 @RestController
@@ -37,7 +37,6 @@ public class ShopController {
     public LikeSummaryDto likeSummary(@PathVariable String songId){
         return shopService.summary(songId);
     }
-
 
     @PostMapping("/songs/{songId}/comments")
     public CommentResponse addComment(@PathVariable String songId,

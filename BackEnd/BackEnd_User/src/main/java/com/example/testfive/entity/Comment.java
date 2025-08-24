@@ -26,6 +26,6 @@ public class Comment {
     private int dislikes = 0;
 
     @ManyToOne
-    @JoinColumn(name = "user_name", referencedColumnName = "name")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 }
