@@ -93,4 +93,14 @@ public class ShopController {
                 .createdAt("")
                 .likes(likes).dislikes(dislikes).build();
     }
+
+    @PostMapping("/comments")
+    public CommentResponse addCommentDirect(@RequestBody CommentRequest req,
+                                            @RequestHeader(value="X-User-Id", required=false) String uid){
+        if(req.getSongId() == null) throw new RuntimeException("Missing songId");
+        var c = shopService.addComment(req.getSongId(), userIdFromHeader(uid), req.getText());
+        return toDto(c.getId(), c.getUser().getId(), c.getText(), c.getLikes(), c.getDislikes());
+    }
+
+
 }
