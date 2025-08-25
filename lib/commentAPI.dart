@@ -17,26 +17,28 @@ class Comment {
 
   factory Comment.fromJson(Map<String, dynamic> json) {
     return Comment(
-      author: json['userId'].toString(),
-      text: json['text'],
-      likes: json['likes'],
-      dislikes: json['dislikes'],
+      author: json['authorName'] ?? "User#${json['userId'] ?? 'Unknown'}",
+      text: json['text'] ?? '',
+      likes: (json['likes'] ?? 0) as int,
+      dislikes: (json['dislikes'] ?? 0) as int,
     );
   }
 }
 
+
 Future<void> addComment(String songId, String text, int userId) async {
   final url = Uri.parse("$baseUrl/api/comments");
   print("Sending comment to: $url");
-  print("Payload: {songId: $songId, userId: $userId, text: $text}");
 
   try {
     final res = await http.post(
       url,
-      headers: {"Content-Type": "application/json"},
+      headers: {
+        "Content-Type": "application/json",
+        "X-User-Id": userId.toString(),
+      },
       body: jsonEncode({
         "songId": songId,
-        "username": userId,
         "text": text,
       }),
     );
@@ -53,14 +55,17 @@ Future<void> addComment(String songId, String text, int userId) async {
   }
 }
 
+
 Future<List<Comment>> getComments(String songId) async {
-  final url = Uri.parse("$baseUrl/api/comments/$songId");
+  final url = Uri.parse("$baseUrl/api/shop/songs/$songId/comments");
+  print("Fetching comments from: $url");
+
   final res = await http.get(url);
 
   if (res.statusCode == 200) {
     final List<dynamic> data = jsonDecode(res.body);
     return data.map((c) => Comment.fromJson(c)).toList();
   } else {
-    throw Exception("Error2");
+    throw Exception("HTTP Error: ${res.statusCode}, Body: ${res.body}");
   }
 }

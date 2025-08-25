@@ -15,7 +15,7 @@ import 'song.dart';
 import 'wallet.dart';
 import 'dart:async';
 import 'config.dart';
-import 'commentAPI.dart';
+import 'commentAPI.dart' as api;
 
 
 
@@ -49,8 +49,17 @@ class _PurchasePageState extends State<PurchasePage> {
 
   Future<void> _fetchComments() async {
     try {
-      final comments = await getComments(widget.song.assetPath);
-      setState(() => _comments = comments.cast<Comment>());
+      final List<api.Comment> comments = await api.getComments(widget.song.assetPath);
+      setState(() {
+        _comments = comments
+            .map((c) => Comment(
+          author: c.author,
+          text: c.text,
+          likes: c.likes,
+          dislikes: c.dislikes,
+        ))
+            .toList();
+      });
     } catch (e) {
       print("Error : $e");
     }
@@ -98,7 +107,7 @@ class _PurchasePageState extends State<PurchasePage> {
     if (text.isEmpty) return;
 
     try {
-      await addComment(widget.song.assetPath, text, 1);
+      await api.addComment(widget.song.assetPath, text, 1);
       setState(() {
         _comments.insert(0, Comment(author: 'You', text: text));
         _commentController.clear();

@@ -20,11 +20,18 @@ public class CommentController {
     private CommentService commentService;
 
     @Autowired
-    private UserRepository personRepository;
+    private UserRepository userRepository;
+
+    private Long userIdFromHeader(String uid) {
+        if (uid == null) throw new RuntimeException("Missing user id");
+        return Long.parseLong(uid);
+    }
 
     @PostMapping
-    public ResponseEntity<Comment> addComment(@RequestBody CommentRequest request) {
-        User user = personRepository.findById(request.getUserId())
+    public ResponseEntity<Comment> addComment(@RequestBody CommentRequest request,
+                                              @RequestHeader(value = "X-User-Id", required = false) String uid) {
+        Long userId = userIdFromHeader(uid);
+        User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         Comment comment = new Comment();
@@ -35,10 +42,8 @@ public class CommentController {
         return ResponseEntity.ok(commentService.saveComment(comment));
     }
 
-
     @GetMapping("/{songId}")
     public ResponseEntity<List<Comment>> getComments(@PathVariable String songId) {
         return ResponseEntity.ok(commentService.getCommentsBySong(songId));
     }
 }
-
