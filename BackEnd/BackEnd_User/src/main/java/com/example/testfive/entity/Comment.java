@@ -25,9 +25,7 @@ public class Comment {
     private int likes = 0;
     private int dislikes = 0;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private String userEmail;
 
     @Column(updatable = false)
     @org.hibernate.annotations.CreationTimestamp
