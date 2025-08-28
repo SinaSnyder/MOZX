@@ -36,7 +36,7 @@ class _PurchasePageState extends State<PurchasePage> {
   bool _isDownloading = false;
   bool _downloaded = false;
 
-  List<Comment> _comments = [];
+  List<api.Comment> _comments = [];
   final TextEditingController _commentController = TextEditingController();
 
 
@@ -52,7 +52,7 @@ class _PurchasePageState extends State<PurchasePage> {
       final List<api.Comment> comments = await api.getComments(widget.song.assetPath);
       setState(() {
         _comments = comments
-            .map((c) => Comment(
+            .map((c) => api.Comment(
           author: c.author,
           text: c.text,
           likes: c.likes,
@@ -109,7 +109,7 @@ class _PurchasePageState extends State<PurchasePage> {
     try {
       await api.addComment(widget.song.assetPath, text, 1);
       setState(() {
-        _comments.insert(0, Comment(author: 'You', text: text));
+        _comments.insert(0, api.Comment(author: 'You', text: text));
         _commentController.clear();
       });
     } catch (e) {
@@ -278,16 +278,3 @@ class _PurchasePageState extends State<PurchasePage> {
 
 
 
-class Comment {
-  final String author;
-  final String text;
-  int likes;
-  int dislikes;
-
-  Comment({
-    required this.author,
-    required this.text,
-    this.likes = 0,
-    this.dislikes = 0,
-  });
-}

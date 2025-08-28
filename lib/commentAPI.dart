@@ -17,7 +17,7 @@ class Comment {
 
   factory Comment.fromJson(Map<String, dynamic> json) {
     return Comment(
-      author: json['authorName'] ?? json['userEmail'] ?? "Unknown",
+      author: json['authorName'] ?? "Unknown",
       text: json['text'] ?? '',
       likes: (json['likes'] ?? 0) as int,
       dislikes: (json['dislikes'] ?? 0) as int,
@@ -64,6 +64,7 @@ Future<List<Comment>> getComments(String songId) async {
 
   if (res.statusCode == 200) {
     final List<dynamic> data = jsonDecode(res.body);
+    print("Comment JSON: $data");
     return data.map((c) => Comment.fromJson(c)).toList();
   } else {
     throw Exception("HTTP Error: ${res.statusCode}, Body: ${res.body}");
