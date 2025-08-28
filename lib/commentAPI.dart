@@ -17,7 +17,7 @@ class Comment {
 
   factory Comment.fromJson(Map<String, dynamic> json) {
     return Comment(
-      author: json['authorName'] ?? "User#${json['userId'] ?? 'Unknown'}",
+      author: json['authorName'] ?? json['userEmail'] ?? "Unknown",
       text: json['text'] ?? '',
       likes: (json['likes'] ?? 0) as int,
       dislikes: (json['dislikes'] ?? 0) as int,

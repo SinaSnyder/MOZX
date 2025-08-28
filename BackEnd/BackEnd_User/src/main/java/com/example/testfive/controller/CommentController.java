@@ -38,13 +38,13 @@ public class CommentController {
         Comment comment = new Comment();
         comment.setSongId(request.getSongId());
         comment.setText(request.getText());
-        comment.setUserEmail(user.getEmail());
+        comment.setUser(user);
 
         Comment saved = commentService.saveComment(comment);
 
         CommentResponse response = new CommentResponse(
                 saved.getId(),
-                saved.getUserEmail(),
+                saved.getUser().getEmail(),
                 saved.getText(),
                 saved.getCreatedAt() != null ? saved.getCreatedAt().toString() : null,
                 saved.getLikes(),
@@ -60,7 +60,7 @@ public class CommentController {
 
         List<CommentResponse> response = comments.stream().map(c -> new CommentResponse(
                 c.getId(),
-                c.getUserEmail(),
+                c.getUser().getEmail(),
                 c.getText(),
                 c.getCreatedAt() != null ? c.getCreatedAt().toString() : null,
                 c.getLikes(),
